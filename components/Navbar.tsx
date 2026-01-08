@@ -156,11 +156,15 @@ const Navbar: React.FC<NavbarProps> = ({ setIsQuoteModalOpen }) => {
                   <span>07538 284300</span>
                 </a>
                 
-                <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)} className="mt-2">
-                  <button className="bg-primary-600 text-white w-full py-4 rounded-xl font-heading font-semibold text-lg hover:bg-primary-700 transition-colors">
-                    Book Free Survey
-                  </button>
-                </Link>
+                <button 
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    setIsQuoteModalOpen(true);
+                  }}
+                  className="mt-2 bg-primary-600 text-white w-full py-4 rounded-xl font-heading font-semibold text-lg hover:bg-primary-700 transition-colors"
+                >
+                  Book Free Survey
+                </button>
               </div>
             </motion.div>
           )}
@@ -185,11 +189,12 @@ const Navbar: React.FC<NavbarProps> = ({ setIsQuoteModalOpen }) => {
                 <Phone size={18} />
                 <span>Call Now</span>
               </a>
-              <Link to="/contact" className="flex-1">
-                <button className="w-full bg-primary-600 text-white py-3 rounded-xl font-heading font-semibold">
-                  Book Survey
-                </button>
-              </Link>
+              <button 
+                onClick={() => setIsQuoteModalOpen(true)}
+                className="flex-1 bg-primary-600 text-white py-3 rounded-xl font-heading font-semibold"
+              >
+                Book Survey
+              </button>
             </div>
           </motion.div>
         )}

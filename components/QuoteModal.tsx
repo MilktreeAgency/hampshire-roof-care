@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Mail, Phone, MapPin, User, MessageSquare, ArrowRight, ArrowLeft, CheckCircle } from 'lucide-react';
+import { X, Mail, Phone, MapPin, User, MessageSquare, ArrowRight, ArrowLeft, CheckCircle, Home, Building2, Castle, Warehouse, Layers, Triangle, Square, CircleDot } from 'lucide-react';
 
 interface QuoteModalProps {
   isOpen: boolean;
@@ -10,6 +10,8 @@ interface QuoteModalProps {
 const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
+    propertyType: '',
+    roofType: '',
     name: '',
     email: '',
     phone: '',
@@ -17,13 +19,13 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
     message: ''
   });
 
-  const totalSteps = 2;
+  const totalSteps = 4;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
     setStep(1);
-    setFormData({ name: '', email: '', phone: '', postcode: '', message: '' });
+    setFormData({ propertyType: '', roofType: '', name: '', email: '', phone: '', postcode: '', message: '' });
     onClose();
   };
 
@@ -32,6 +34,14 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
       ...prev,
       [e.target.name]: e.target.value
     }));
+  };
+
+  const selectOption = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+    // Auto-advance after selection with a small delay for visual feedback
+    setTimeout(() => {
+      if (step < totalSteps) setStep(step + 1);
+    }, 300);
   };
 
   const nextStep = () => {
@@ -47,8 +57,8 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
     onClose();
   };
 
-  const canProceedStep1 = formData.name.trim() && formData.postcode.trim();
-  const canProceedStep2 = formData.email.trim() && formData.phone.trim();
+  const canProceedStep3 = formData.name.trim() && formData.postcode.trim();
+  const canProceedStep4 = formData.email.trim() && formData.phone.trim();
 
   const slideVariants = {
     enter: (direction: number) => ({
@@ -64,6 +74,20 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
       opacity: 0
     })
   };
+
+  const propertyTypes = [
+    { id: 'detached', label: 'Detached House', icon: Home, description: 'Standalone property' },
+    { id: 'semi-detached', label: 'Semi-Detached', icon: Building2, description: 'Joined on one side' },
+    { id: 'terraced', label: 'Terraced', icon: Warehouse, description: 'Row of houses' },
+    { id: 'bungalow', label: 'Bungalow', icon: Castle, description: 'Single storey' },
+  ];
+
+  const roofTypes = [
+    { id: 'pitched-tiles', label: 'Pitched Tiles', icon: Triangle, description: 'Clay or concrete tiles' },
+    { id: 'pitched-slate', label: 'Pitched Slate', icon: Layers, description: 'Natural or synthetic slate' },
+    { id: 'flat', label: 'Flat Roof', icon: Square, description: 'Felt, EPDM or fibreglass' },
+    { id: 'not-sure', label: 'Not Sure', icon: CircleDot, description: "I'll need advice" },
+  ];
 
   return (
     <AnimatePresence>
@@ -89,7 +113,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
             >
               <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
                 {/* Header */}
-                <div className="bg-primary-600 px-8 py-6 relative">
+                <div className="bg-gradient-to-br from-primary-600 to-primary-700 px-8 py-6 relative">
                   <button
                     onClick={handleClose}
                     className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
@@ -100,19 +124,19 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                   
                   <div className="pr-8">
                     <h2 className="text-xl md:text-2xl font-heading font-bold text-white mb-1">
-                      Get Your Free Quote
+                      Book Your Free Survey
                     </h2>
                     <p className="text-primary-100 text-sm">
-                      We'll get back to you within 24 hours
+                      Get expert advice within 24 hours
                     </p>
                   </div>
 
                   {/* Progress Bar */}
                   <div className="mt-4 flex items-center gap-2">
-                    {[1, 2].map((s) => (
+                    {[1, 2, 3, 4].map((s) => (
                       <div
                         key={s}
-                        className={`h-1 flex-1 rounded-full transition-colors duration-300 ${
+                        className={`h-1.5 flex-1 rounded-full transition-all duration-500 ${
                           s <= step ? 'bg-white' : 'bg-white/30'
                         }`}
                       />
@@ -123,8 +147,9 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
 
                 {/* Form Content */}
                 <form onSubmit={handleSubmit}>
-                  <div className="p-8 min-h-[320px] relative overflow-hidden">
+                  <div className="p-6 md:p-8 min-h-[380px] relative overflow-hidden">
                     <AnimatePresence mode="wait" custom={step}>
+                      {/* Step 1: Property Type */}
                       {step === 1 && (
                         <motion.div
                           key="step1"
@@ -134,15 +159,146 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                           animate="center"
                           exit="exit"
                           transition={{ duration: 0.3, ease: "easeInOut" }}
-                          className="space-y-6"
+                          className="space-y-5"
                         >
                           <div className="text-center mb-6">
-                            <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary-100 text-primary-600 mb-3">
-                              <User size={24} />
+                            <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-primary-100 to-primary-50 text-primary-600 mb-3 shadow-sm">
+                              <Home size={28} />
                             </div>
-                            <h3 className="text-lg font-heading font-semibold text-charcoal">
-                              Let's start with your details
+                            <h3 className="text-xl font-heading font-bold text-charcoal">
+                              What type of property?
                             </h3>
+                            <p className="text-slate-muted text-sm mt-1">Select your property type</p>
+                          </div>
+
+                          <div className="grid grid-cols-2 gap-3">
+                            {propertyTypes.map((type) => {
+                              const Icon = type.icon;
+                              const isSelected = formData.propertyType === type.id;
+                              return (
+                                <button
+                                  key={type.id}
+                                  type="button"
+                                  onClick={() => selectOption('propertyType', type.id)}
+                                  className={`relative p-4 rounded-2xl border-2 transition-all duration-300 text-left group hover:scale-[1.02] active:scale-[0.98] ${
+                                    isSelected 
+                                      ? 'border-primary-500 bg-primary-50 shadow-lg shadow-primary-100' 
+                                      : 'border-warm-200 hover:border-primary-300 hover:bg-warm-50'
+                                  }`}
+                                >
+                                  <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-3 transition-colors ${
+                                    isSelected 
+                                      ? 'bg-primary-600 text-white' 
+                                      : 'bg-warm-100 text-charcoal group-hover:bg-primary-100 group-hover:text-primary-600'
+                                  }`}>
+                                    <Icon size={24} />
+                                  </div>
+                                  <h4 className={`font-semibold text-sm ${isSelected ? 'text-primary-700' : 'text-charcoal'}`}>
+                                    {type.label}
+                                  </h4>
+                                  <p className="text-xs text-slate-muted mt-0.5">{type.description}</p>
+                                  
+                                  {isSelected && (
+                                    <motion.div
+                                      initial={{ scale: 0 }}
+                                      animate={{ scale: 1 }}
+                                      className="absolute top-3 right-3 w-5 h-5 rounded-full bg-primary-600 flex items-center justify-center"
+                                    >
+                                      <CheckCircle size={14} className="text-white" />
+                                    </motion.div>
+                                  )}
+                                </button>
+                              );
+                            })}
+                          </div>
+                        </motion.div>
+                      )}
+
+                      {/* Step 2: Roof Type */}
+                      {step === 2 && (
+                        <motion.div
+                          key="step2"
+                          custom={1}
+                          variants={slideVariants}
+                          initial="enter"
+                          animate="center"
+                          exit="exit"
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                          className="space-y-5"
+                        >
+                          <div className="text-center mb-6">
+                            <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-primary-100 to-primary-50 text-primary-600 mb-3 shadow-sm">
+                              <Layers size={28} />
+                            </div>
+                            <h3 className="text-xl font-heading font-bold text-charcoal">
+                              What type of roof?
+                            </h3>
+                            <p className="text-slate-muted text-sm mt-1">Select your roof type</p>
+                          </div>
+
+                          <div className="grid grid-cols-2 gap-3">
+                            {roofTypes.map((type) => {
+                              const Icon = type.icon;
+                              const isSelected = formData.roofType === type.id;
+                              return (
+                                <button
+                                  key={type.id}
+                                  type="button"
+                                  onClick={() => selectOption('roofType', type.id)}
+                                  className={`relative p-4 rounded-2xl border-2 transition-all duration-300 text-left group hover:scale-[1.02] active:scale-[0.98] ${
+                                    isSelected 
+                                      ? 'border-primary-500 bg-primary-50 shadow-lg shadow-primary-100' 
+                                      : 'border-warm-200 hover:border-primary-300 hover:bg-warm-50'
+                                  }`}
+                                >
+                                  <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-3 transition-colors ${
+                                    isSelected 
+                                      ? 'bg-primary-600 text-white' 
+                                      : 'bg-warm-100 text-charcoal group-hover:bg-primary-100 group-hover:text-primary-600'
+                                  }`}>
+                                    <Icon size={24} />
+                                  </div>
+                                  <h4 className={`font-semibold text-sm ${isSelected ? 'text-primary-700' : 'text-charcoal'}`}>
+                                    {type.label}
+                                  </h4>
+                                  <p className="text-xs text-slate-muted mt-0.5">{type.description}</p>
+                                  
+                                  {isSelected && (
+                                    <motion.div
+                                      initial={{ scale: 0 }}
+                                      animate={{ scale: 1 }}
+                                      className="absolute top-3 right-3 w-5 h-5 rounded-full bg-primary-600 flex items-center justify-center"
+                                    >
+                                      <CheckCircle size={14} className="text-white" />
+                                    </motion.div>
+                                  )}
+                                </button>
+                              );
+                            })}
+                          </div>
+                        </motion.div>
+                      )}
+
+                      {/* Step 3: Name & Postcode */}
+                      {step === 3 && (
+                        <motion.div
+                          key="step3"
+                          custom={1}
+                          variants={slideVariants}
+                          initial="enter"
+                          animate="center"
+                          exit="exit"
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                          className="space-y-5"
+                        >
+                          <div className="text-center mb-6">
+                            <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-primary-100 to-primary-50 text-primary-600 mb-3 shadow-sm">
+                              <User size={28} />
+                            </div>
+                            <h3 className="text-xl font-heading font-bold text-charcoal">
+                              Your details
+                            </h3>
+                            <p className="text-slate-muted text-sm mt-1">So we can prepare your quote</p>
                           </div>
 
                           {/* Name */}
@@ -182,24 +338,26 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                         </motion.div>
                       )}
 
-                      {step === 2 && (
+                      {/* Step 4: Contact Details */}
+                      {step === 4 && (
                         <motion.div
-                          key="step2"
+                          key="step4"
                           custom={1}
                           variants={slideVariants}
                           initial="enter"
                           animate="center"
                           exit="exit"
                           transition={{ duration: 0.3, ease: "easeInOut" }}
-                          className="space-y-6"
+                          className="space-y-5"
                         >
                           <div className="text-center mb-6">
-                            <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary-100 text-primary-600 mb-3">
-                              <MessageSquare size={24} />
+                            <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-primary-100 to-primary-50 text-primary-600 mb-3 shadow-sm">
+                              <MessageSquare size={28} />
                             </div>
-                            <h3 className="text-lg font-heading font-semibold text-charcoal">
+                            <h3 className="text-xl font-heading font-bold text-charcoal">
                               How can we reach you?
                             </h3>
+                            <p className="text-slate-muted text-sm mt-1">We'll be in touch within 24 hours</p>
                           </div>
 
                           {/* Email */}
@@ -249,7 +407,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                               value={formData.message}
                               onChange={handleChange}
                               className="w-full px-4 py-3 border-2 border-warm-200 rounded-xl focus:outline-none focus:border-primary-500 transition-colors text-charcoal placeholder-slate-muted resize-none"
-                              placeholder="Tell us about your roof..."
+                              placeholder="Tell us about your roof issue..."
                             />
                           </div>
                         </motion.div>
@@ -258,7 +416,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                   </div>
 
                   {/* Footer Navigation */}
-                  <div className="px-8 pb-8 flex items-center justify-between gap-4">
+                  <div className="px-6 md:px-8 pb-6 md:pb-8 flex items-center justify-between gap-4">
                     {step > 1 ? (
                       <button
                         type="button"
@@ -272,31 +430,55 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                       <div />
                     )}
 
-                    {step < totalSteps ? (
+                    {step === 1 && formData.propertyType && (
                       <button
                         type="button"
                         onClick={nextStep}
-                        disabled={!canProceedStep1}
+                        className="flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-xl font-heading font-semibold transition-all duration-200 group"
+                      >
+                        <span>Continue</span>
+                        <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                      </button>
+                    )}
+
+                    {step === 2 && formData.roofType && (
+                      <button
+                        type="button"
+                        onClick={nextStep}
+                        className="flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-xl font-heading font-semibold transition-all duration-200 group"
+                      >
+                        <span>Continue</span>
+                        <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                      </button>
+                    )}
+
+                    {step === 3 && (
+                      <button
+                        type="button"
+                        onClick={nextStep}
+                        disabled={!canProceedStep3}
                         className="flex items-center gap-2 bg-primary-600 hover:bg-primary-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white px-6 py-3 rounded-xl font-heading font-semibold transition-all duration-200 group"
                       >
                         <span>Continue</span>
                         <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                       </button>
-                    ) : (
+                    )}
+
+                    {step === 4 && (
                       <button
                         type="submit"
-                        disabled={!canProceedStep2}
+                        disabled={!canProceedStep4}
                         className="flex items-center gap-2 bg-primary-600 hover:bg-primary-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white px-6 py-3 rounded-xl font-heading font-semibold transition-all duration-200 group"
                       >
                         <CheckCircle size={18} />
-                        <span>Get My Quote</span>
+                        <span>Book My Survey</span>
                       </button>
                     )}
                   </div>
                 </form>
 
                 {/* Trust Footer */}
-                <div className="bg-warm-50 px-8 py-4 border-t border-warm-200">
+                <div className="bg-warm-50 px-6 md:px-8 py-4 border-t border-warm-200">
                   <p className="text-xs text-slate-muted text-center">
                     🔒 Your information is secure and will never be shared with third parties.
                   </p>
