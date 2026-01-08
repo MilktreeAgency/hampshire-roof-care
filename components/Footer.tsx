@@ -13,34 +13,6 @@ const Footer: React.FC<FooterProps> = ({ setIsQuoteModalOpen }) => {
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-mesh-pattern opacity-5" />
       
-      {/* Pre-footer CTA */}
-      <div className="relative border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 md:py-12">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
-            <div className="text-center lg:text-left">
-              <h3 className="font-heading text-xl md:text-2xl font-bold mb-2">Ready to protect your home?</h3>
-              <p className="text-white/60 text-sm md:text-base">Book your free roof survey today</p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 w-full sm:w-auto">
-              <a 
-                href="tel:07538284300"
-                className="inline-flex items-center justify-center gap-2 bg-white text-charcoal px-6 py-3 md:px-8 md:py-4 rounded-full font-heading font-semibold hover:bg-white/90 transition-colors text-sm md:text-base w-full sm:w-auto"
-              >
-                <Phone size={18} className="md:w-5 md:h-5" />
-                <span>07538 284300</span>
-              </a>
-              <button
-                onClick={() => setIsQuoteModalOpen(true)}
-                className="inline-flex items-center justify-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-heading font-semibold transition-colors group text-sm md:text-base w-full sm:w-auto"
-              >
-                <span>Book Free Survey</span>
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Main Footer */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 pt-12 md:pt-16 pb-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-12 md:mb-16">
