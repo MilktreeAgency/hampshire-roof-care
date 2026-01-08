@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Phone } from 'lucide-react';
+import { ArrowRight, Phone, Star } from 'lucide-react';
 
 interface HeroProps {
   setIsQuoteModalOpen: (open: boolean) => void;
@@ -79,6 +79,20 @@ const Hero: React.FC<HeroProps> = ({ setIsQuoteModalOpen }) => {
                 <Phone size={20} />
                 <span>07538 284300</span>
               </a>
+            </div>
+
+            {/* Trust Signal - 5 Star Reviews */}
+            <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 pt-2 justify-center lg:justify-start">
+              <div className="flex items-center gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={18} className="fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-white font-bold text-sm md:text-base">100+ 5-Star Reviews</span>
+                <span className="text-white/50">•</span>
+                <span className="text-white/70 text-sm">Trusted by Hampshire homeowners</span>
+              </div>
             </div>
 
             {/* Areas Served */}
