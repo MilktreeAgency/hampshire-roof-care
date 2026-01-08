@@ -8,6 +8,7 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ setIsQuoteModalOpen }) => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,7 +19,7 @@ const Hero: React.FC<HeroProps> = ({ setIsQuoteModalOpen }) => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-16 md:pt-20 overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center pt-16 md:pt-20 overflow-hidden bg-charcoal">
       {/* Background Video with Overlay */}
       <div className="absolute inset-0 z-0">
         <video
@@ -26,19 +27,12 @@ const Hero: React.FC<HeroProps> = ({ setIsQuoteModalOpen }) => {
           muted
           loop
           playsInline
-          className="w-full h-full object-cover"
+          onCanPlay={() => setVideoLoaded(true)}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
+          style={{ minWidth: '100%', minHeight: '100%' }}
         >
           <source src="/Video_Editing_Remove_Roof_Objects.mp4" type="video/mp4" />
-          {/* Fallback image if video doesn't load */}
         </video>
-        {/* Fallback background image */}
-        <div className="absolute inset-0 -z-10">
-          <img
-            src="https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&q=80"
-            alt="Professional Roofing"
-            className="w-full h-full object-cover"
-          />
-        </div>
         {/* Advanced Gradient Overlay - Stronger on mobile */}
         <div className="absolute inset-0 bg-gradient-to-r from-charcoal/98 via-charcoal/95 to-charcoal/90 md:from-charcoal/95 md:via-charcoal/70 md:to-charcoal/40" />
         <div className="absolute inset-0 bg-gradient-to-t from-charcoal/95 via-charcoal/40 to-charcoal/20 md:from-charcoal/90 md:via-transparent md:to-charcoal/20" />
