@@ -31,11 +31,11 @@ const Hero: React.FC<HeroProps> = ({ setIsQuoteModalOpen }) => {
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
           style={{ minWidth: '100%', minHeight: '100%' }}
         >
-          <source src="/Video_Editing_Remove_Roof_Objects.mp4" type="video/mp4" />
+          <source src="https://res.cloudinary.com/dkew5dwgo/video/upload/v1767870607/Hampshire_Roofcare_Heros_icc2kl.mp4" type="video/mp4" />
         </video>
-        {/* Advanced Gradient Overlay - Stronger on mobile */}
-        <div className="absolute inset-0 bg-gradient-to-r from-charcoal/98 via-charcoal/95 to-charcoal/90 md:from-charcoal/95 md:via-charcoal/70 md:to-charcoal/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/95 via-charcoal/40 to-charcoal/20 md:from-charcoal/90 md:via-transparent md:to-charcoal/20" />
+        {/* Advanced Gradient Overlay - Very light to show video clearly */}
+        <div className="absolute inset-0 bg-gradient-to-r from-charcoal/65 via-charcoal/50 to-charcoal/40 md:from-charcoal/60 md:via-charcoal/35 md:to-charcoal/15" />
+        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/50 via-charcoal/15 to-transparent md:from-charcoal/45 md:via-transparent md:to-transparent" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full py-12 md:py-20">
