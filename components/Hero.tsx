@@ -97,7 +97,7 @@ const Hero: React.FC<HeroProps> = ({ setIsQuoteModalOpen }) => {
 
             {/* Areas Served */}
             <p className="text-white/60 text-xs md:text-sm px-2 sm:px-0">
-              Serving homeowners across <span className="text-white/80 font-medium">Southampton, Winchester, the New Forest,</span> and nearby areas.
+              Serving properties across <span className="text-white/80 font-medium">Southampton, Winchester, the New Forest,</span> and nearby areas.
             </p>
           </motion.div>
 
