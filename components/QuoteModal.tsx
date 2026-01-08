@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Mail, Phone, MapPin, User, MessageSquare, ArrowRight, ArrowLeft, CheckCircle, Home, Building2, Castle, Warehouse, Layers, Triangle, Square, CircleDot } from 'lucide-react';
+import { X, User, MessageSquare, ArrowRight, ArrowLeft, CheckCircle, Home, Building2, Castle, Warehouse, Layers, Triangle, Square, CircleDot, Wrench, Hammer, Droplets, Shield } from 'lucide-react';
 
 interface QuoteModalProps {
   isOpen: boolean;
@@ -10,6 +10,7 @@ interface QuoteModalProps {
 const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
+    service: '',
     propertyType: '',
     roofType: '',
     name: '',
@@ -19,13 +20,13 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
     message: ''
   });
 
-  const totalSteps = 4;
+  const totalSteps = 5;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
     setStep(1);
-    setFormData({ propertyType: '', roofType: '', name: '', email: '', phone: '', postcode: '', message: '' });
+    setFormData({ service: '', propertyType: '', roofType: '', name: '', email: '', phone: '', postcode: '', message: '' });
     onClose();
   };
 
@@ -57,8 +58,8 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
     onClose();
   };
 
-  const canProceedStep3 = formData.name.trim() && formData.postcode.trim();
-  const canProceedStep4 = formData.email.trim() && formData.phone.trim();
+  const canProceedStep4 = formData.name.trim() && formData.postcode.trim();
+  const canProceedStep5 = formData.email.trim() && formData.phone.trim();
 
   const slideVariants = {
     enter: (direction: number) => ({
@@ -74,6 +75,15 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
       opacity: 0
     })
   };
+
+  const serviceTypes = [
+    { id: 'roof-repair', label: 'Roof Repairs', icon: Wrench, description: 'Fix leaks & damage' },
+    { id: 'roof-replacement', label: 'Roof Replacement', icon: Hammer, description: 'Full roof renewal' },
+    { id: 'flat-roof', label: 'Flat Roofing', icon: Square, description: 'EPDM, felt & GRP' },
+    { id: 'guttering', label: 'Guttering', icon: Droplets, description: 'Repairs & cleaning' },
+    { id: 'leadwork', label: 'Leadwork', icon: Shield, description: 'Flashing & valleys' },
+    { id: 'not-sure', label: 'Not Sure', icon: CircleDot, description: 'Need advice' },
+  ];
 
   const propertyTypes = [
     { id: 'detached', label: 'Detached House', icon: Home, description: 'Standalone property' },
@@ -133,7 +143,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
 
                   {/* Progress Bar */}
                   <div className="mt-4 flex items-center gap-2">
-                    {[1, 2, 3, 4].map((s) => (
+                    {[1, 2, 3, 4, 5].map((s) => (
                       <div
                         key={s}
                         className={`h-1.5 flex-1 rounded-full transition-all duration-500 ${
@@ -147,12 +157,77 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
 
                 {/* Form Content */}
                 <form onSubmit={handleSubmit}>
-                  <div className="p-6 md:p-8 min-h-[380px] relative overflow-hidden">
+                  <div className="p-6 md:p-8 min-h-[420px] relative overflow-hidden">
                     <AnimatePresence mode="wait" custom={step}>
-                      {/* Step 1: Property Type */}
+                      {/* Step 1: Service Type */}
                       {step === 1 && (
                         <motion.div
                           key="step1"
+                          custom={1}
+                          variants={slideVariants}
+                          initial="enter"
+                          animate="center"
+                          exit="exit"
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                          className="space-y-5"
+                        >
+                          <div className="text-center mb-4">
+                            <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-primary-100 to-primary-50 text-primary-600 mb-3 shadow-sm">
+                              <Wrench size={28} />
+                            </div>
+                            <h3 className="text-xl font-heading font-bold text-charcoal">
+                              What service do you need?
+                            </h3>
+                            <p className="text-slate-muted text-sm mt-1">Select a service</p>
+                          </div>
+
+                          <div className="grid grid-cols-2 gap-3">
+                            {serviceTypes.map((type) => {
+                              const Icon = type.icon;
+                              const isSelected = formData.service === type.id;
+                              return (
+                                <button
+                                  key={type.id}
+                                  type="button"
+                                  onClick={() => selectOption('service', type.id)}
+                                  className={`relative p-4 rounded-2xl border-2 transition-all duration-300 text-left group hover:scale-[1.02] active:scale-[0.98] ${
+                                    isSelected 
+                                      ? 'border-primary-500 bg-primary-50 shadow-lg shadow-primary-100' 
+                                      : 'border-warm-200 hover:border-primary-300 hover:bg-warm-50'
+                                  }`}
+                                >
+                                  <div className={`inline-flex items-center justify-center w-10 h-10 rounded-xl mb-2 transition-colors ${
+                                    isSelected 
+                                      ? 'bg-primary-600 text-white' 
+                                      : 'bg-warm-100 text-charcoal group-hover:bg-primary-100 group-hover:text-primary-600'
+                                  }`}>
+                                    <Icon size={20} />
+                                  </div>
+                                  <h4 className={`font-semibold text-sm ${isSelected ? 'text-primary-700' : 'text-charcoal'}`}>
+                                    {type.label}
+                                  </h4>
+                                  <p className="text-xs text-slate-muted mt-0.5">{type.description}</p>
+                                  
+                                  {isSelected && (
+                                    <motion.div
+                                      initial={{ scale: 0 }}
+                                      animate={{ scale: 1 }}
+                                      className="absolute top-3 right-3 w-5 h-5 rounded-full bg-primary-600 flex items-center justify-center"
+                                    >
+                                      <CheckCircle size={14} className="text-white" />
+                                    </motion.div>
+                                  )}
+                                </button>
+                              );
+                            })}
+                          </div>
+                        </motion.div>
+                      )}
+
+                      {/* Step 2: Property Type */}
+                      {step === 2 && (
+                        <motion.div
+                          key="step2"
                           custom={1}
                           variants={slideVariants}
                           initial="enter"
@@ -214,10 +289,10 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                         </motion.div>
                       )}
 
-                      {/* Step 2: Roof Type */}
-                      {step === 2 && (
+                      {/* Step 3: Roof Type */}
+                      {step === 3 && (
                         <motion.div
-                          key="step2"
+                          key="step3"
                           custom={1}
                           variants={slideVariants}
                           initial="enter"
@@ -279,10 +354,10 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                         </motion.div>
                       )}
 
-                      {/* Step 3: Name & Postcode */}
-                      {step === 3 && (
+                      {/* Step 4: Name & Postcode */}
+                      {step === 4 && (
                         <motion.div
-                          key="step3"
+                          key="step4"
                           custom={1}
                           variants={slideVariants}
                           initial="enter"
@@ -338,10 +413,10 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                         </motion.div>
                       )}
 
-                      {/* Step 4: Contact Details */}
-                      {step === 4 && (
+                      {/* Step 5: Contact Details */}
+                      {step === 5 && (
                         <motion.div
-                          key="step4"
+                          key="step5"
                           custom={1}
                           variants={slideVariants}
                           initial="enter"
@@ -430,7 +505,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                       <div />
                     )}
 
-                    {step === 1 && formData.propertyType && (
+                    {step === 1 && formData.service && (
                       <button
                         type="button"
                         onClick={nextStep}
@@ -441,7 +516,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                       </button>
                     )}
 
-                    {step === 2 && formData.roofType && (
+                    {step === 2 && formData.propertyType && (
                       <button
                         type="button"
                         onClick={nextStep}
@@ -452,12 +527,11 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                       </button>
                     )}
 
-                    {step === 3 && (
+                    {step === 3 && formData.roofType && (
                       <button
                         type="button"
                         onClick={nextStep}
-                        disabled={!canProceedStep3}
-                        className="flex items-center gap-2 bg-primary-600 hover:bg-primary-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white px-6 py-3 rounded-xl font-heading font-semibold transition-all duration-200 group"
+                        className="flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-xl font-heading font-semibold transition-all duration-200 group"
                       >
                         <span>Continue</span>
                         <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -466,8 +540,20 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
 
                     {step === 4 && (
                       <button
-                        type="submit"
+                        type="button"
+                        onClick={nextStep}
                         disabled={!canProceedStep4}
+                        className="flex items-center gap-2 bg-primary-600 hover:bg-primary-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white px-6 py-3 rounded-xl font-heading font-semibold transition-all duration-200 group"
+                      >
+                        <span>Continue</span>
+                        <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                      </button>
+                    )}
+
+                    {step === 5 && (
+                      <button
+                        type="submit"
+                        disabled={!canProceedStep5}
                         className="flex items-center gap-2 bg-primary-600 hover:bg-primary-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white px-6 py-3 rounded-xl font-heading font-semibold transition-all duration-200 group"
                       >
                         <CheckCircle size={18} />
