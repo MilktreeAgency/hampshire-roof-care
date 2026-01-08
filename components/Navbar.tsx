@@ -36,7 +36,7 @@ const Navbar: React.FC<NavbarProps> = ({ setIsQuoteModalOpen }) => {
   ];
 
   const isHomePage = location.pathname === '/';
-  const showTransparent = isHomePage && !isScrolled;
+  const showTransparent = isHomePage && !isScrolled && !isMobileMenuOpen;
 
   return (
     <>
