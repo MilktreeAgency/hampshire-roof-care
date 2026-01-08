@@ -134,12 +134,13 @@ const AreaPage: React.FC<AreaPageProps> = ({ setIsQuoteModalOpen }) => {
                   <Phone size={20} />
                   <span>Call 07538 284300</span>
                 </a>
-                <Link to="/contact">
-                  <button className="inline-flex items-center gap-2 border-2 border-white text-white px-8 py-4 rounded-full font-heading font-semibold hover:bg-white/10 transition-colors">
-                    Send an Enquiry
-                    <ArrowRight size={18} />
-                  </button>
-                </Link>
+                <button 
+                  onClick={() => setIsQuoteModalOpen(true)}
+                  className="inline-flex items-center gap-2 border-2 border-white text-white px-8 py-4 rounded-full font-heading font-semibold hover:bg-white/10 transition-colors"
+                >
+                  Send an Enquiry
+                  <ArrowRight size={18} />
+                </button>
               </div>
             </div>
           </motion.div>
@@ -202,12 +203,13 @@ const AreaPage: React.FC<AreaPageProps> = ({ setIsQuoteModalOpen }) => {
                 <Phone size={20} />
                 <span>Call Now</span>
               </a>
-              <Link to="/contact">
-                <button className="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-full font-heading font-semibold transition-all shadow-glow-primary group">
-                  <span>Book Free Survey</span>
-                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                </button>
-              </Link>
+              <button 
+                onClick={() => setIsQuoteModalOpen(true)}
+                className="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-full font-heading font-semibold transition-all shadow-glow-primary group"
+              >
+                <span>Book Free Survey</span>
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </button>
             </div>
           </motion.div>
         </div>
@@ -342,12 +344,13 @@ const AreaPage: React.FC<AreaPageProps> = ({ setIsQuoteModalOpen }) => {
                       <Phone size={20} />
                       <span>07538 284300</span>
                     </a>
-                    <Link to="/contact" className="block">
-                      <button className="w-full border-2 border-white text-white py-4 rounded-xl font-heading font-semibold hover:bg-white/10 transition-colors flex items-center justify-center gap-2 group">
-                        <span>Book Survey</span>
-                        <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                      </button>
-                    </Link>
+                    <button 
+                      onClick={() => setIsQuoteModalOpen(true)}
+                      className="w-full border-2 border-white text-white py-4 rounded-xl font-heading font-semibold hover:bg-white/10 transition-colors flex items-center justify-center gap-2 group"
+                    >
+                      <span>Book Survey</span>
+                      <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                    </button>
                   </div>
                 </div>
               </motion.div>
@@ -430,12 +433,13 @@ const AreaPage: React.FC<AreaPageProps> = ({ setIsQuoteModalOpen }) => {
                 <Phone size={20} />
                 <span>Call 07538 284300</span>
               </a>
-              <Link to="/contact">
-                <button className="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-full font-heading font-semibold transition-colors group">
-                  Book Free Survey
-                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                </button>
-              </Link>
+              <button 
+                onClick={() => setIsQuoteModalOpen(true)}
+                className="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-full font-heading font-semibold transition-colors group"
+              >
+                Book Free Survey
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </button>
             </div>
           </motion.div>
         </div>

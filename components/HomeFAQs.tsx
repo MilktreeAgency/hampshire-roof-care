@@ -3,7 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, HelpCircle, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const HomeFAQs: React.FC = () => {
+interface HomeFAQsProps {
+  setIsQuoteModalOpen: (open: boolean) => void;
+}
+
+const HomeFAQs: React.FC<HomeFAQsProps> = ({ setIsQuoteModalOpen }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const faqs = [
@@ -87,12 +91,12 @@ const HomeFAQs: React.FC = () => {
                       <ArrowRight size={16} />
                     </Link>
                     <span className="text-slate-light">|</span>
-                    <Link 
-                      to="/contact"
+                    <button 
+                      onClick={() => setIsQuoteModalOpen(true)}
                       className="inline-flex items-center gap-2 text-charcoal font-semibold text-sm hover:text-primary-600 transition-colors"
                     >
                       <span>Contact Us</span>
-                    </Link>
+                    </button>
                   </div>
                 </div>
               </div>

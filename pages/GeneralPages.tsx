@@ -291,12 +291,13 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setIsQuoteModalOpen }) => 
                 Hampshire Roof Care Company was built on a simple idea: homeowners deserve honest advice and quality work. No pressure tactics. No unnecessary upselling. Just straightforward roofing expertise.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/contact">
-                  <button className="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-full font-heading font-semibold transition-all group">
-                    <span>Book Free Survey</span>
-                    <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                  </button>
-                </Link>
+                <button 
+                  onClick={() => setIsQuoteModalOpen(true)}
+                  className="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-full font-heading font-semibold transition-all group"
+                >
+                  <span>Book Free Survey</span>
+                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                </button>
                 <a 
                   href="tel:07538284300"
                   className="inline-flex items-center justify-center gap-2 border-2 border-charcoal text-charcoal hover:bg-charcoal hover:text-white px-8 py-4 rounded-full font-heading font-semibold transition-all"
@@ -431,12 +432,13 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setIsQuoteModalOpen }) => 
                 <Phone size={20} />
                 <span>Call 07538 284300</span>
               </a>
-              <Link to="/contact">
-                <button className="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-full font-heading font-semibold transition-colors group">
-                  Book Free Survey
-                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                </button>
-              </Link>
+              <button 
+                onClick={() => setIsQuoteModalOpen(true)}
+                className="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-full font-heading font-semibold transition-colors group"
+              >
+                Book Free Survey
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </button>
             </div>
           </motion.div>
         </div>
@@ -585,12 +587,13 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ setIsQuoteModalOpen })
         >
           <h2 className="font-heading text-2xl lg:text-3xl font-bold text-charcoal mb-4">Experience the Same Quality</h2>
           <p className="text-slate-body mb-8 max-w-xl mx-auto">Book your free survey and discover why Hampshire homeowners trust us.</p>
-          <Link to="/contact">
-            <button className="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-full font-heading font-semibold transition-all group">
-              Book Free Survey
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </button>
-          </Link>
+          <button 
+            onClick={() => setIsQuoteModalOpen(true)}
+            className="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-full font-heading font-semibold transition-all group"
+          >
+            Book Free Survey
+            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+          </button>
         </motion.div>
       </div>
     </div>
@@ -782,12 +785,13 @@ export const FAQPage: React.FC<FAQPageProps> = ({ setIsQuoteModalOpen }) => {
               <Phone size={18} />
               <span>07538 284300</span>
             </a>
-            <Link to="/contact">
-              <button className="inline-flex items-center justify-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-full font-heading font-semibold transition-colors group w-full sm:w-auto">
-                Contact Us
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </button>
-            </Link>
+            <button 
+              onClick={() => setIsQuoteModalOpen(true)}
+              className="inline-flex items-center justify-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-full font-heading font-semibold transition-colors group w-full sm:w-auto"
+            >
+              Contact Us
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </button>
           </div>
         </motion.div>
       </div>

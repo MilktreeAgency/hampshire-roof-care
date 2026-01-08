@@ -1,8 +1,11 @@
 import React from 'react';
 import { Eye, Award, ClipboardCheck } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
-const TrustStrip: React.FC = () => {
+interface TrustStripProps {
+  setIsQuoteModalOpen: (open: boolean) => void;
+}
+
+const TrustStrip: React.FC<TrustStripProps> = ({ setIsQuoteModalOpen }) => {
   const items = [
     {
       icon: <Eye className="text-primary-800" size={28} />,
@@ -53,11 +56,12 @@ const TrustStrip: React.FC = () => {
 
         {/* CTA */}
         <div className="text-center mt-12">
-          <Link to="/contact">
-            <button className="inline-flex items-center gap-2 bg-primary-800 hover:bg-primary-900 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-primary-800/20">
-              Request a survey and quote
-            </button>
-          </Link>
+          <button 
+            onClick={() => setIsQuoteModalOpen(true)}
+            className="inline-flex items-center gap-2 bg-primary-800 hover:bg-primary-900 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-primary-800/20"
+          >
+            Request a survey and quote
+          </button>
         </div>
       </div>
     </section>

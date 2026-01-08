@@ -1,8 +1,11 @@
 import React from 'react';
 import { CheckCircle } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
-const WhyChooseUs: React.FC = () => {
+interface WhyChooseUsProps {
+  setIsQuoteModalOpen: (open: boolean) => void;
+}
+
+const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ setIsQuoteModalOpen }) => {
   const benefits = [
     {
       title: "You get straight answers",
@@ -47,11 +50,12 @@ const WhyChooseUs: React.FC = () => {
         </div>
 
         <div className="text-center">
-          <Link to="/contact">
-            <button className="inline-flex items-center gap-2 bg-primary-800 hover:bg-primary-900 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-primary-800/20">
-              Speak to us today
-            </button>
-          </Link>
+          <button 
+            onClick={() => setIsQuoteModalOpen(true)}
+            className="inline-flex items-center gap-2 bg-primary-800 hover:bg-primary-900 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-primary-800/20"
+          >
+            Speak to us today
+          </button>
         </div>
       </div>
     </section>

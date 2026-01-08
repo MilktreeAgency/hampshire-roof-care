@@ -1,10 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Phone, ArrowRight, Shield, Clock, Star } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import ImagePlaceholder from './ImagePlaceholder';
 
-const FinalCTA: React.FC = () => {
+interface FinalCTAProps {
+  setIsQuoteModalOpen: (open: boolean) => void;
+}
+
+const FinalCTA: React.FC<FinalCTAProps> = ({ setIsQuoteModalOpen }) => {
 
   return (
     <section className="py-24 lg:py-32 bg-charcoal relative overflow-hidden">
@@ -69,12 +71,13 @@ const FinalCTA: React.FC = () => {
                 <Phone size={22} />
                 <span>Call 07538 284300</span>
               </a>
-              <Link to="/contact">
-                <button className="inline-flex items-center justify-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-8 py-5 rounded-full font-heading font-semibold text-lg transition-all duration-300 shadow-glow-primary group w-full sm:w-auto">
-                  <span>Book Free Survey</span>
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </button>
-              </Link>
+              <button 
+                onClick={() => setIsQuoteModalOpen(true)}
+                className="inline-flex items-center justify-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-8 py-5 rounded-full font-heading font-semibold text-lg transition-all duration-300 shadow-glow-primary group"
+              >
+                <span>Book Free Survey</span>
+                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              </button>
             </div>
 
             {/* Response Time */}

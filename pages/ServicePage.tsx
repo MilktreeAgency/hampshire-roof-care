@@ -85,12 +85,13 @@ const ServicePage: React.FC<ServicePageProps> = ({ setIsQuoteModalOpen }) => {
                   <Phone size={20} />
                   <span>Call 07538 284300</span>
                 </a>
-                <Link to="/contact">
-                  <button className="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-full font-heading font-semibold transition-colors shadow-glow-primary">
-                    Book Free Survey
-                    <ArrowRight size={18} />
-                  </button>
-                </Link>
+                <button 
+                  onClick={() => setIsQuoteModalOpen(true)}
+                  className="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-full font-heading font-semibold transition-colors shadow-glow-primary"
+                >
+                  Book Free Survey
+                  <ArrowRight size={18} />
+                </button>
               </div>
             </div>
           </motion.div>
@@ -145,12 +146,13 @@ const ServicePage: React.FC<ServicePageProps> = ({ setIsQuoteModalOpen }) => {
                 <Phone size={18} className="md:w-5 md:h-5" />
                 <span>Call Now</span>
               </a>
-              <Link to="/contact" className="w-full sm:w-auto">
-                <button className="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-heading font-semibold transition-all shadow-glow-primary group text-sm md:text-base w-full justify-center">
-                  <span>Book Free Survey</span>
-                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                </button>
-              </Link>
+              <button 
+                onClick={() => setIsQuoteModalOpen(true)}
+                className="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-heading font-semibold transition-all shadow-glow-primary group text-sm md:text-base w-full sm:w-auto justify-center"
+              >
+                <span>Book Free Survey</span>
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </button>
             </div>
           </motion.div>
         </div>
@@ -180,12 +182,13 @@ const ServicePage: React.FC<ServicePageProps> = ({ setIsQuoteModalOpen }) => {
               ))}
             </div>
             <div className="flex flex-col gap-2">
-              <Link to="/contact" className="w-full">
-                <button className="w-full bg-primary-600 hover:bg-primary-700 text-white font-heading font-semibold py-3.5 rounded-xl transition-colors flex items-center justify-center gap-2 shadow-soft text-sm">
-                  Book Free Survey
-                  <ArrowRight size={16} />
-                </button>
-              </Link>
+              <button 
+                onClick={() => setIsQuoteModalOpen(true)}
+                className="w-full bg-primary-600 hover:bg-primary-700 text-white font-heading font-semibold py-3.5 rounded-xl transition-colors flex items-center justify-center gap-2 shadow-soft text-sm"
+              >
+                Book Free Survey
+                <ArrowRight size={16} />
+              </button>
               <a href="tel:07538284300" className="w-full border-2 border-charcoal text-charcoal font-heading font-semibold py-3.5 rounded-xl transition-colors flex items-center justify-center gap-2 hover:bg-charcoal hover:text-white text-sm">
                 <Phone size={16} />
                 07538 284300
@@ -317,12 +320,13 @@ const ServicePage: React.FC<ServicePageProps> = ({ setIsQuoteModalOpen }) => {
                     </div>
                   ))}
                 </div>
-                <Link to="/contact">
-                  <button className="w-full bg-primary-600 hover:bg-primary-700 text-white font-heading font-semibold py-4 rounded-xl transition-colors flex items-center justify-center gap-2 shadow-soft hover:shadow-glow-primary group">
-                    Book Free Survey
-                    <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                  </button>
-                </Link>
+                <button 
+                  onClick={() => setIsQuoteModalOpen(true)}
+                  className="w-full bg-primary-600 hover:bg-primary-700 text-white font-heading font-semibold py-4 rounded-xl transition-colors flex items-center justify-center gap-2 shadow-soft hover:shadow-glow-primary group"
+                >
+                  Book Free Survey
+                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                </button>
                 <a href="tel:07538284300" className="w-full mt-3 border-2 border-charcoal text-charcoal font-heading font-semibold py-4 rounded-xl transition-colors flex items-center justify-center gap-2 hover:bg-charcoal hover:text-white">
                   <Phone size={18} />
                   07538 284300
@@ -399,12 +403,13 @@ const ServicePage: React.FC<ServicePageProps> = ({ setIsQuoteModalOpen }) => {
                 <Phone size={18} className="md:w-5 md:h-5" />
                 <span>Call 07538 284300</span>
               </a>
-              <Link to="/contact" className="w-full sm:w-auto">
-                <button className="w-full inline-flex items-center justify-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-6 py-3.5 md:px-8 md:py-4 rounded-full font-heading font-semibold transition-colors group text-sm md:text-base">
-                  Book Free Survey
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform md:w-[18px] md:h-[18px]" />
-                </button>
-              </Link>
+              <button 
+                onClick={() => setIsQuoteModalOpen(true)}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-6 py-3.5 md:px-8 md:py-4 rounded-full font-heading font-semibold transition-colors group text-sm md:text-base"
+              >
+                Book Free Survey
+                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform md:w-[18px] md:h-[18px]" />
+              </button>
             </div>
           </motion.div>
         </div>

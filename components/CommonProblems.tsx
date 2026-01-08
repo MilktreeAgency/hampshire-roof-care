@@ -2,9 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Droplets, Wind, AlertTriangle, ThermometerSun, Layers, Building, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import ImagePlaceholder from './ImagePlaceholder';
 
-const CommonProblems: React.FC = () => {
+interface CommonProblemsProps {
+  setIsQuoteModalOpen: (open: boolean) => void;
+}
+
+const CommonProblems: React.FC<CommonProblemsProps> = ({ setIsQuoteModalOpen }) => {
   const problems = [
     {
       icon: Droplets,
@@ -156,12 +159,13 @@ const CommonProblems: React.FC = () => {
                 Roof problems can be confusing. That's why we offer a free site survey—we'll climb up, inspect properly, and explain exactly what we find. No jargon, no pressure.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/contact">
-                  <button className="inline-flex items-center justify-center gap-2 bg-white text-charcoal hover:bg-white/90 px-8 py-4 rounded-full font-heading font-semibold transition-all duration-300 group">
-                    <span>Book Free Survey</span>
-                    <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                  </button>
-                </Link>
+                <button 
+                  onClick={() => setIsQuoteModalOpen(true)}
+                  className="inline-flex items-center justify-center gap-2 bg-white text-charcoal hover:bg-white/90 px-8 py-4 rounded-full font-heading font-semibold transition-all duration-300 group"
+                >
+                  <span>Book Free Survey</span>
+                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                </button>
                 <a 
                   href="tel:07538284300"
                   className="inline-flex items-center justify-center gap-2 border-2 border-white/30 text-white hover:bg-white/10 px-8 py-4 rounded-full font-heading font-semibold transition-all duration-300"

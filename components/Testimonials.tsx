@@ -2,9 +2,12 @@ import React from 'react';
 import { Star, ArrowUpRight, Quote, MapPin } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import ImagePlaceholder from './ImagePlaceholder';
 
-const Testimonials: React.FC = () => {
+interface TestimonialsProps {
+  setIsQuoteModalOpen: (open: boolean) => void;
+}
+
+const Testimonials: React.FC<TestimonialsProps> = ({ setIsQuoteModalOpen }) => {
 
   const reviews = [
     {
@@ -173,12 +176,13 @@ const Testimonials: React.FC = () => {
           className="mt-16 text-center"
         >
           <p className="text-white/50 mb-6">Ready to experience the same quality service?</p>
-          <Link to="/contact">
-            <button className="inline-flex items-center gap-2 bg-white text-charcoal hover:bg-white/90 px-8 py-4 rounded-full font-heading font-semibold transition-all duration-300 shadow-soft-lg group">
-              <span>Get Your Free Quote</span>
-              <ArrowUpRight size={18} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </button>
-          </Link>
+          <button 
+            onClick={() => setIsQuoteModalOpen(true)}
+            className="inline-flex items-center gap-2 bg-white text-charcoal hover:bg-white/90 px-8 py-4 rounded-full font-heading font-semibold transition-all duration-300 shadow-soft-lg group"
+          >
+            <span>Get Your Free Quote</span>
+            <ArrowUpRight size={18} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </button>
         </motion.div>
       </div>
     </section>

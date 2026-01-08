@@ -2,9 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, ArrowRight, Wrench, Home, Layers, Droplets, Hammer, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import ImagePlaceholder from './ImagePlaceholder';
 
-const ServicesBento: React.FC = () => {
+interface ServicesBentoProps {
+  setIsQuoteModalOpen: (open: boolean) => void;
+}
+
+const ServicesBento: React.FC<ServicesBentoProps> = ({ setIsQuoteModalOpen }) => {
   return (
     <section id="services" className="py-16 md:py-24 lg:py-32 bg-warm-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -225,12 +228,13 @@ const ServicesBento: React.FC = () => {
               <p className="font-heading font-semibold text-charcoal mb-1">Not sure which service you need?</p>
               <p className="text-slate-muted text-sm">Tell us what you've noticed and we'll guide you</p>
             </div>
-            <Link to="/contact">
-              <button className="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-full font-heading font-semibold transition-all duration-300 shadow-soft hover:shadow-glow-primary group">
-                <span>Speak to an Expert</span>
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </button>
-            </Link>
+            <button 
+              onClick={() => setIsQuoteModalOpen(true)}
+              className="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-full font-heading font-semibold transition-all duration-300 shadow-soft hover:shadow-glow-primary group"
+            >
+              <span>Speak to an Expert</span>
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </button>
           </div>
         </motion.div>
       </div>

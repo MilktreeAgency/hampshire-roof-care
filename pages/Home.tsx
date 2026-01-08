@@ -18,15 +18,15 @@ const Home: React.FC<HomeProps> = ({ setIsQuoteModalOpen }) => {
   return (
     <>
       <Hero setIsQuoteModalOpen={setIsQuoteModalOpen} />
-      <TrustStrip />
-      <ServicesBento />
-      <WhyChooseUs />
-      <CommonProblems />
-      <Process />
-      <Testimonials />
-      <HomeFAQs />
+      <TrustStrip setIsQuoteModalOpen={setIsQuoteModalOpen} />
+      <ServicesBento setIsQuoteModalOpen={setIsQuoteModalOpen} />
+      <WhyChooseUs setIsQuoteModalOpen={setIsQuoteModalOpen} />
+      <CommonProblems setIsQuoteModalOpen={setIsQuoteModalOpen} />
+      <Process setIsQuoteModalOpen={setIsQuoteModalOpen} />
+      <Testimonials setIsQuoteModalOpen={setIsQuoteModalOpen} />
+      <HomeFAQs setIsQuoteModalOpen={setIsQuoteModalOpen} />
       <AreasStrip />
-      <FinalCTA />
+      <FinalCTA setIsQuoteModalOpen={setIsQuoteModalOpen} />
     </>
   );
 };

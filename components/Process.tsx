@@ -1,10 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { MessageSquare, Search, FileCheck, Camera, CheckCircle, ArrowRight, Phone } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import ImagePlaceholder from './ImagePlaceholder';
 
-const Process: React.FC = () => {
+interface ProcessProps {
+  setIsQuoteModalOpen: (open: boolean) => void;
+}
+
+const Process: React.FC<ProcessProps> = ({ setIsQuoteModalOpen }) => {
   const steps = [
     {
       id: "01",
@@ -185,12 +187,13 @@ const Process: React.FC = () => {
           className="text-center"
         >
           <div className="inline-flex flex-col sm:flex-row items-center gap-4">
-            <Link to="/contact">
-              <button className="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-full font-heading font-semibold transition-all duration-300 shadow-soft hover:shadow-glow-primary group">
-                <span>Book Your Free Survey</span>
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </button>
-            </Link>
+            <button 
+              onClick={() => setIsQuoteModalOpen(true)}
+              className="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-full font-heading font-semibold transition-all duration-300 shadow-soft hover:shadow-glow-primary group"
+            >
+              <span>Book Your Free Survey</span>
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </button>
             <span className="text-slate-muted">or</span>
             <a 
               href="tel:07538284300" 
