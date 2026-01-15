@@ -84,9 +84,14 @@ const SEO: React.FC<SEOProps> = ({
     setMetaTag('og:description', metaDescription, true);
     setMetaTag('og:type', ogType === 'local_business' ? 'business.business' : ogType, true);
     setMetaTag('og:site_name', SITE_NAME, true);
-    setMetaTag('og:image', ogImageUrl.startsWith('http') ? ogImageUrl : `${BASE_URL}${ogImageUrl}`, true);
+    
+    // Ensure absolute URL for og:image (required for social platforms)
+    const absoluteImageUrl = ogImageUrl.startsWith('http') ? ogImageUrl : `${BASE_URL}${ogImageUrl}`;
+    setMetaTag('og:image', absoluteImageUrl, true);
+    setMetaTag('og:image:secure_url', absoluteImageUrl, true); // HTTPS version for better compatibility
     setMetaTag('og:image:width', '1200', true);
     setMetaTag('og:image:height', '630', true);
+    setMetaTag('og:image:type', 'image/jpeg', true);
     setMetaTag('og:locale', 'en_GB', true);
     
     if (canonicalUrl) {
