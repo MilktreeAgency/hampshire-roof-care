@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import ImagePlaceholder, { TeamMemberPlaceholder, GalleryPlaceholder } from '../components/ImagePlaceholder';
 import { StatsGrid } from '../components/StatCounter';
 import { AlertBox, TrustBadge } from '../components/ServiceFeature';
+import SEO, { FAQSchema, BreadcrumbSchema } from '../components/SEO';
 
 // ============================================
 // CONTACT PAGE
@@ -15,6 +16,17 @@ interface ContactPageProps {
 
 export const ContactPage: React.FC<ContactPageProps> = ({ setIsQuoteModalOpen }) => (
   <div className="pt-28 pb-24 bg-warm-50 min-h-screen">
+    <SEO 
+      title="Contact Us - Book Your Free Survey"
+      description="Get in touch with Hampshire Roof Care for a free roof survey. Call 07538 284300 or fill out our contact form. Honest advice, no obligation quotes."
+      canonical="/contact"
+    />
+    <BreadcrumbSchema 
+      items={[
+        { name: 'Home', url: '/' },
+        { name: 'Contact', url: '/contact' }
+      ]}
+    />
     <div className="max-w-7xl mx-auto px-6">
       {/* Hero */}
       <div className="text-center mb-16">
@@ -273,6 +285,17 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setIsQuoteModalOpen }) => 
 
   return (
     <div className="min-h-screen bg-warm-50">
+      <SEO 
+        title="About Us - Roofing You Can Trust"
+        description="Hampshire Roof Care Company was built on honest advice and quality work. Learn about our values, experience, and commitment to Hampshire homeowners."
+        canonical="/about"
+      />
+      <BreadcrumbSchema 
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'About', url: '/about' }
+        ]}
+      />
       {/* Hero */}
       <div className="pt-28 pb-16 lg:pb-24 bg-white border-b border-warm-200">
         <div className="max-w-7xl mx-auto px-6">
@@ -316,7 +339,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setIsQuoteModalOpen }) => 
             >
               <img
                 src="/Completed Project.jpg"
-                alt="Hampshire Roof Care completed project"
+                alt="Professional roof replacement completed by Hampshire Roof Care - quality workmanship example"
                 className="w-full aspect-[4/5] object-cover rounded-3xl"
               />
               <div className="absolute -bottom-6 -left-6 bg-charcoal rounded-2xl p-6 shadow-soft-xl max-w-xs">
@@ -455,6 +478,7 @@ interface ReviewsPageProps {
 }
 
 export const ReviewsPage: React.FC<ReviewsPageProps> = ({ setIsQuoteModalOpen }) => {
+  // SEO component will be rendered in the return statement
   const reviews = [
     { name: "Sarah J.", location: "Winchester", text: "Clear, simple advice with no pressure. They explained exactly what my roof needed and didn't try to upsell me on work I didn't need. Highly recommend.", service: "Roof Repairs" },
     { name: "David M.", location: "Southampton", text: "Careful workmanship and a tidy, respectful service. I knew exactly what was happening at each step. The team was professional throughout.", service: "Pitched Roof Replacement" },
@@ -468,6 +492,17 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ setIsQuoteModalOpen })
 
   return (
     <div className="pt-28 pb-24 bg-warm-50 min-h-screen">
+      <SEO 
+        title="Customer Reviews - What Our Customers Say"
+        description="Read real reviews from Hampshire homeowners. See why customers trust Hampshire Roof Care for honest advice and quality roofing workmanship."
+        canonical="/reviews"
+      />
+      <BreadcrumbSchema 
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Reviews', url: '/reviews' }
+        ]}
+      />
       <div className="max-w-7xl mx-auto px-6">
         {/* Hero */}
         <div className="text-center mb-16">
@@ -523,7 +558,7 @@ export const ReviewsPage: React.FC<ReviewsPageProps> = ({ setIsQuoteModalOpen })
             <div className="hidden lg:block">
               <img
                 src="/Customer Photo.jpg"
-                alt="Happy customer"
+                alt="Satisfied Hampshire Roof Care customer with completed roofing project"
                 className="aspect-square object-cover rounded-2xl"
               />
             </div>
@@ -652,8 +687,25 @@ export const FAQPage: React.FC<FAQPageProps> = ({ setIsQuoteModalOpen }) => {
     )
   })).filter(category => category.faqs.length > 0);
 
+  // Flatten all FAQs for schema
+  const allFaqs = faqCategories.flatMap(category => 
+    category.faqs.map(faq => ({ question: faq.q, answer: faq.a }))
+  );
+
   return (
     <div className="pt-28 pb-24 bg-warm-50 min-h-screen">
+      <SEO 
+        title="Frequently Asked Questions"
+        description="Common questions about roof repairs, surveys, and our roofing services in Hampshire. Clear answers in plain English from Hampshire Roof Care."
+        canonical="/faqs"
+      />
+      <FAQSchema faqs={allFaqs} />
+      <BreadcrumbSchema 
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'FAQs', url: '/faqs' }
+        ]}
+      />
       <div className="max-w-5xl mx-auto px-6">
         {/* Hero */}
         <div className="text-center mb-12">
@@ -808,6 +860,12 @@ interface PrivacyPageProps {
 
 export const PrivacyPage: React.FC<PrivacyPageProps> = ({ setIsQuoteModalOpen }) => (
   <div className="pt-28 pb-24 bg-white min-h-screen">
+    <SEO 
+      title="Privacy Policy"
+      description="Hampshire Roof Care privacy policy. Learn how we protect and use your personal information when you use our roofing services."
+      canonical="/privacy-policy"
+      noindex={true}
+    />
     <div className="max-w-3xl mx-auto px-6">
       <motion.div
         initial={{ opacity: 0, y: 20 }}

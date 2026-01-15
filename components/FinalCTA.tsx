@@ -98,7 +98,7 @@ const FinalCTA: React.FC<FinalCTAProps> = ({ setIsQuoteModalOpen }) => {
               {/* Main Image */}
               <img
                 src="/Completed Project.jpg"
-                alt="Completed roofing project"
+                alt="Recently completed roof replacement in Hampshire - professional workmanship by Hampshire Roof Care"
                 className="w-full aspect-[4/5] object-cover rounded-3xl"
               />
               

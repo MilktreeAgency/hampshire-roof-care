@@ -1,5 +1,38 @@
 import React, { useState } from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+/**
+ * SEO Router Configuration
+ * 
+ * For optimal SEO, this site uses BrowserRouter instead of HashRouter.
+ * BrowserRouter creates clean URLs like /services/roof-repairs instead of /#/services/roof-repairs
+ * 
+ * IMPORTANT: BrowserRouter requires server-side configuration to work properly.
+ * The server must be configured to return index.html for all routes.
+ * 
+ * Server Configuration Examples:
+ * 
+ * 1. Netlify (_redirects file):
+ *    /*    /index.html   200
+ * 
+ * 2. Vercel (vercel.json):
+ *    { "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }] }
+ * 
+ * 3. Apache (.htaccess):
+ *    RewriteEngine On
+ *    RewriteBase /
+ *    RewriteRule ^index\.html$ - [L]
+ *    RewriteCond %{REQUEST_FILENAME} !-f
+ *    RewriteCond %{REQUEST_FILENAME} !-d
+ *    RewriteRule . /index.html [L]
+ * 
+ * 4. Nginx:
+ *    location / {
+ *      try_files $uri $uri/ /index.html;
+ *    }
+ * 
+ * If you cannot configure the server, you can switch back to HashRouter:
+ * Change: import { BrowserRouter as Router, ... } to import { HashRouter as Router, ... }
+ */
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import QuoteModal from './components/QuoteModal';

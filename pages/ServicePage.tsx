@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, CheckCircle, Phone, Clock, Shield, AlertTriangle
 import { motion } from 'framer-motion';
 import ImagePlaceholder, { GalleryPlaceholder } from '../components/ImagePlaceholder';
 import { ServiceCard, FeatureList, TrustBadge, AlertBox } from '../components/ServiceFeature';
+import SEO, { ServiceSchema, BreadcrumbSchema } from '../components/SEO';
 
 interface ServicePageProps {
   setIsQuoteModalOpen: (open: boolean) => void;
@@ -17,6 +18,17 @@ const ServicePage: React.FC<ServicePageProps> = ({ setIsQuoteModalOpen }) => {
   if (!slug) {
     return (
       <div className="pt-24 md:pt-28 pb-16 md:pb-24 bg-warm-50 min-h-screen">
+        <SEO 
+          title="Roofing Services"
+          description="Complete roofing solutions for Hampshire homes. Roof repairs, pitched and flat roof replacements, leadwork, and cement work. Free site survey and honest advice."
+          canonical="/services"
+        />
+        <BreadcrumbSchema 
+          items={[
+            { name: 'Home', url: '/' },
+            { name: 'Services', url: '/services' }
+          ]}
+        />
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           {/* Hero */}
           <div className="mb-12 md:mb-16 lg:mb-20">
@@ -115,6 +127,25 @@ const ServicePage: React.FC<ServicePageProps> = ({ setIsQuoteModalOpen }) => {
 
   return (
     <div className="min-h-screen bg-warm-50">
+      <SEO 
+        title={service.metaTitle?.replace(' | Hampshire Roof Care Company', '') || service.title}
+        description={service.metaDescription || service.subtitle}
+        canonical={`/services/${service.slug}`}
+        ogImage={service.image}
+      />
+      <ServiceSchema 
+        name={service.title}
+        description={service.metaDescription || service.subtitle}
+        image={service.image}
+        url={`/services/${service.slug}`}
+      />
+      <BreadcrumbSchema 
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Services', url: '/services' },
+          { name: service.title, url: `/services/${service.slug}` }
+        ]}
+      />
       {/* Hero Header */}
       <div className="relative min-h-[40vh] md:min-h-[50vh] lg:min-h-[60vh] flex items-center justify-center overflow-hidden bg-charcoal">
         {/* Background */}
@@ -207,8 +238,8 @@ const ServicePage: React.FC<ServicePageProps> = ({ setIsQuoteModalOpen }) => {
               viewport={{ once: true }}
             >
               <img
-                src={`/${service.title} in Action.jpg`}
-                alt={`${service.title} in Action`}
+                src={service.image}
+                alt={`${service.title} service - Hampshire Roof Care professional roofing work`}
                 className="w-full aspect-[16/10] md:aspect-[16/9] object-cover rounded-2xl md:rounded-3xl"
               />
             </motion.div>
@@ -247,7 +278,7 @@ const ServicePage: React.FC<ServicePageProps> = ({ setIsQuoteModalOpen }) => {
                   <img
                     key={num}
                     src={`/ourwork-${num}.jpg`}
-                    alt={`Completed project ${num}`}
+                    alt={`Hampshire Roof Care completed ${service.title.toLowerCase()} project ${num}`}
                     className="aspect-square object-cover rounded-xl"
                   />
                 ))}

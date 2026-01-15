@@ -33,8 +33,7 @@ const TrustStrip: React.FC<TrustStripProps> = ({ setIsQuoteModalOpen }) => {
             Roofing advice you can trust
           </h2>
           <p className="text-charcoal/60 mt-3 max-w-2xl mx-auto leading-relaxed">
-            Some companies take too long to respond. Others quote for work you do not need.
-            We keep things simple, honest, and clear.
+            We won't quote for work that you don't require, and keep everything as clear and as simple as possible.
           </p>
         </div>
 

@@ -13,19 +13,19 @@ export const services: PageData[] = [
     slug: 'roof-repairs',
     title: 'Roof Repairs',
     subtitle: 'Expert leak detection and repairs to protect your home from water damage. No guesswork—just honest solutions.',
-    image: '/roof repairs.jpg',
+    image: '/services-roof-repairs.jpg',
     metaTitle: 'Roof Repairs in Hampshire | Hampshire Roof Care Company',
     metaDescription: 'Professional roof repairs for leaks, slipped tiles, and storm damage in Hampshire. Free site survey, honest advice, transparent pricing.',
     content: `
       <h3>Common Signs You Need a Roof Repair</h3>
-      <p>Your roof protects everything underneath it. When something goes wrong, catching it early can save you significant money and stress. Here are the warning signs to watch for:</p>
+      <p>Your roof not only protects yourself and your family members, but your fixtures and fittings and personal belongings as well. Acting quickly on a concern can save you significant money and stress. Here are the warning signs to watch for:</p>
       <ul>
         <li><strong>Water marks on ceilings or walls</strong> — Often the first visible sign of a leak. The source may not be directly above the stain.</li>
-        <li><strong>Drips or damp patches in the loft</strong> — Check your loft space after heavy rain for any signs of water ingress.</li>
+        <li><strong>Drips or damp patches in the loft</strong> — Check your loft space after heavy rain for any signs of water ingress. Or could be a sign of problematic condensation.</li>
         <li><strong>Slipped, cracked, or missing tiles</strong> — Visible from ground level, these create entry points for water.</li>
         <li><strong>Pieces of cement in gutters</strong> — A sign that your ridge or verge pointing is deteriorating.</li>
         <li><strong>Leaks around chimneys</strong> — One of the most common leak sources, often caused by failing flashing.</li>
-        <li><strong>Damage after storms</strong> — High winds can lift tiles and damage flashing, even if it's not immediately visible.</li>
+        <li><strong>Damage after storms</strong> — High winds can lift tiles and damage flashing, even if it's not immediately visible. Stray debris and tree branches are also a major cause of roof damage.</li>
       </ul>
       <p>Not sure what you're dealing with? That's exactly what our free survey is for. We'll climb up, inspect properly, and explain what we find in plain English.</p>
       
@@ -119,7 +119,7 @@ export const services: PageData[] = [
       <p>We'll advise on what works best for your property type, local planning considerations, and budget.</p>
       
       <h3>Timeline and What to Expect</h3>
-      <p>A typical pitched roof replacement takes 1-2 weeks depending on size and complexity. We'll give you a realistic timeline after the survey. During the work:</p>
+      <p>A typical pitched roof replacement typically takes 1-3 weeks, however all work is weather dependent. We'll give you a realistic timeline after the survey. During the work:</p>
       <ul>
         <li>We maintain access to your home throughout</li>
         <li>The site is secured each evening</li>
@@ -132,7 +132,7 @@ export const services: PageData[] = [
     slug: 'flat-roof-replacement',
     title: 'Flat Roof Replacement',
     subtitle: 'Modern flat roof systems that last 25+ years. Stop the cycle of repairs with a proper replacement.',
-    image: '/flat roof replacement.jpg',
+    image: '/services-flat-roof-replacement.jpg',
     metaTitle: 'Flat Roof Replacement in Hampshire | Hampshire Roof Care Company',
     metaDescription: 'Expert flat roof replacement in Hampshire. EPDM, fibreglass, and felt systems. Free survey, quality materials, guaranteed workmanship.',
     content: `
@@ -144,7 +144,7 @@ export const services: PageData[] = [
         <li><strong>Blistering or bubbling</strong> — Trapped moisture expanding in heat, causing delamination.</li>
         <li><strong>Cracks and splits</strong> — The surface has become brittle and is failing.</li>
         <li><strong>Lifting at edges and joints</strong> — Key failure points that let water track underneath.</li>
-        <li><strong>Visible decay or soft spots</strong> — The decking below may be damaged and need replacing.</li>
+        <li><strong>Visible decay or soft spots</strong> — The substrate below may be damaged and need replacing.</li>
       </ul>
       <p>Some flat roof problems can be repaired, but if issues keep returning, replacement is often more cost-effective long-term.</p>
       
@@ -163,18 +163,20 @@ export const services: PageData[] = [
       <ul>
         <li><strong>EPDM Rubber</strong> — Single-piece membrane, extremely durable, 25+ year lifespan. Ideal for most domestic flat roofs.</li>
         <li><strong>Fibreglass (GRP)</strong> — Seamless, rigid finish. Great for roofs that are walked on or used as balconies.</li>
+        <li><strong>Single Ply</strong> — Modern membrane system offering excellent durability and weather resistance with proven long-term performance.</li>
+        <li><strong>Liquid Plastics</strong> — Seamless liquid-applied waterproofing that adapts to any roof shape, ideal for complex details and repairs.</li>
         <li><strong>High-performance felt</strong> — Torch-applied systems, cost-effective for suitable applications.</li>
       </ul>
       <p>We'll recommend the right system based on your roof's size, usage, and budget.</p>
       
       <h3>Our Replacement Process</h3>
       <ol>
-        <li><strong>Thorough inspection</strong> — We check the decking, drainage, and surrounding details.</li>
+        <li><strong>Thorough inspection</strong> — We check the substrate, drainage, and surrounding details.</li>
         <li><strong>System recommendation</strong> — We explain which system suits your roof and why.</li>
-        <li><strong>Decking assessment</strong> — If the boards below are damaged, we replace them.</li>
-        <li><strong>Insulation upgrade</strong> — We can add or improve insulation to current standards.</li>
+        <li><strong>Substrate assessment</strong> — If the boards below are damaged, we replace them.</li>
+        <li><strong>Insulation upgrade</strong> — We can add or improve insulation in conjunction with updated building regulations.</li>
         <li><strong>New covering installation</strong> — Careful, manufacturer-approved application.</li>
-        <li><strong>Edge details</strong> — Proper finishing at all edges, upstands, and penetrations.</li>
+        <li><strong>Perimeter and detailing</strong> — Proper finishing at all edges, upstands, and penetrations.</li>
         <li><strong>Quality check</strong> — Final inspection and water test where appropriate.</li>
       </ol>
       
@@ -192,7 +194,7 @@ export const services: PageData[] = [
     slug: 'leadwork-and-lead-flashing',
     title: 'Leadwork & Lead Flashing',
     subtitle: 'Expert lead flashing installation and repairs to waterproof your roof\'s most vulnerable points.',
-    image: '/leadwork & lead flashing.jpg',
+    image: '/services-leadwork.jpg',
     metaTitle: 'Leadwork and Lead Flashing in Hampshire | Hampshire Roof Care Company',
     metaDescription: 'Professional leadwork and lead flashing services in Hampshire. Stop leaks at chimneys and roof joints. Expert installation, lasting results.',
     content: `
@@ -247,7 +249,7 @@ export const services: PageData[] = [
     slug: 'roof-pointing-and-cement-work',
     title: 'Cement Work & Roof Pointing',
     subtitle: 'Secure your ridge tiles and roof edges. Prevent water ingress and potential hazards from loose cement.',
-    image: '/cement work & roof pitching.jpg',
+    image: '/services-cement-work.jpg',
     metaTitle: 'Roof Pointing and Cement Work in Hampshire | Hampshire Roof Care Company',
     metaDescription: 'Professional roof pointing and cement work in Hampshire. Secure ridge tiles, repair verges, prevent water damage. Free survey and quote.',
     content: `
@@ -318,7 +320,7 @@ export const areas: PageData[] = [
       <p>We always carry out a site survey before we quote. This isn't negotiable — it's how we ensure you get honest advice and accurate pricing.</p>
       
       <h3>Roofing Services in Southampton</h3>
-      <p>We support Southampton homeowners with the full range of residential roofing services:</p>
+      <p>We support Southampton homeowners with the full range of residential AND commercial roofing services:</p>
       <ul>
         <li><strong>Roof repairs</strong> — For leaks, slipped tiles, storm damage, and general wear</li>
         <li><strong>Pitched roof replacement</strong> — When your roof has reached end of life</li>
@@ -459,6 +461,8 @@ export const guides: PageData[] = [
     title: 'Water Stain on Ceiling After Rain: What It Means',
     subtitle: 'Understanding why stains appear and how to find the real source of the leak.',
     image: 'https://images.unsplash.com/photo-1584622050111-993a426fbf0a?auto=format&fit=crop&q=80',
+    metaTitle: 'Water Stain on Ceiling After Rain - Causes & Solutions | Hampshire Roof Care',
+    metaDescription: 'Discovered a water stain on your ceiling after rain? Learn what causes ceiling stains, how to find the leak source, and when to call a professional roofer.',
     content: `
       <p>Discovering a brown ring or damp patch on your ceiling after heavy rain is worrying. It almost certainly indicates water is getting in somewhere — but the cause isn't always directly above the stain.</p>
       
@@ -500,6 +504,8 @@ export const guides: PageData[] = [
     title: 'Slipped Roof Tiles: How Urgent Is It?',
     subtitle: 'Understanding when slipped tiles need immediate attention and when they can wait.',
     image: 'https://images.unsplash.com/photo-1623956420822-3c27da1d50c7?auto=format&fit=crop&q=80',
+    metaTitle: 'Slipped Roof Tiles - How Urgent Is It? | Hampshire Roof Care',
+    metaDescription: 'Noticed slipped tiles on your roof? Learn why tiles slip, the risks of leaving them, and when you need urgent repairs. Expert advice from Hampshire roofers.',
     content: `
       <p>High winds regularly displace tiles and slates. A single slipped tile might look minor, but it exposes the layer beneath — usually a breathable membrane or old felt — to conditions it wasn't designed to handle long-term.</p>
       
@@ -545,6 +551,8 @@ export const guides: PageData[] = [
     title: 'Chimney Leaks: Common Causes and Warning Signs',
     subtitle: 'Why chimneys are the number one source of roof leaks and what to look for.',
     image: 'https://images.unsplash.com/photo-1595846519845-68e298c2edd8?auto=format&fit=crop&q=80',
+    metaTitle: 'Chimney Leaks - Causes & Warning Signs | Hampshire Roof Care',
+    metaDescription: 'Chimney leaks are the most common source of roof problems. Learn about flashing failure, mortar deterioration, and warning signs to watch for.',
     content: `
       <p>Chimneys are the most common source of roof leaks. They penetrate your roof's waterproof barrier and create complex junctions that are vulnerable to failure. Understanding chimney leak causes helps you spot problems early.</p>
       
@@ -596,11 +604,13 @@ export const guides: PageData[] = [
     title: 'Flat Roof Bubbling: When to Worry',
     subtitle: 'Understanding what bubbles on your flat roof mean and when replacement is necessary.',
     image: 'https://images.unsplash.com/photo-1599818451124-774b77f8270c?auto=format&fit=crop&q=80',
+    metaTitle: 'Flat Roof Bubbling - When to Worry | Hampshire Roof Care',
+    metaDescription: 'Bubbles and blisters on your flat roof? Learn what causes flat roof bubbling, when to repair vs replace, and modern flat roof replacement options.',
     content: `
       <p>If your felt flat roof looks like the surface of the moon — covered in bubbles, blisters, or bare patches — it's telling you something is wrong. Understanding what causes these problems helps you decide what to do next.</p>
       
       <h3>What Causes Flat Roof Bubbling?</h3>
-      <p>Blisters and bubbles form when moisture gets trapped between layers of roofing felt or between the felt and decking:</p>
+      <p>Blisters and bubbles form when moisture gets trapped between layers of roofing felt or between the felt and substrate:</p>
       <ul>
         <li><strong>Moisture trapped during installation</strong> — If felt was laid on damp timber or in wet conditions</li>
         <li><strong>Condensation</strong> — Warm air from inside the building reaches the underside of the cold roof covering</li>
@@ -641,6 +651,8 @@ export const guides: PageData[] = [
     title: 'How Our Site Survey Works',
     subtitle: 'What to expect when we visit to assess your roof — and why we never quote without one.',
     image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80',
+    metaTitle: 'How Our Free Roof Survey Works | Hampshire Roof Care',
+    metaDescription: 'What to expect from our free roof survey. We inspect properly, explain what we find in plain English, and give you an accurate quote with no obligation.',
     content: `
       <p>We never quote over the phone or from photos alone. Every roof is different, and accurate advice requires seeing yours in person. Here's what our survey involves and why it matters.</p>
       
@@ -707,6 +719,8 @@ export const guides: PageData[] = [
     title: 'Lead Flashing Explained Simply',
     subtitle: 'Understanding this critical component and why it matters for a watertight roof.',
     image: 'https://images.unsplash.com/photo-1628124235882-7d22b27a3c31?auto=format&fit=crop&q=80',
+    metaTitle: 'Lead Flashing Explained Simply | Hampshire Roof Care',
+    metaDescription: 'What is lead flashing and why does it matter? Learn about this critical roofing component, signs of failure, and when repair or replacement is needed.',
     content: `
       <p>Lead flashing is one of those building components most people never think about until it fails. Yet it's critical to keeping water out of your home. Here's what you need to know.</p>
       

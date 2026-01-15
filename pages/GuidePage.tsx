@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, BookOpen, Phone, AlertTriangle, CheckCircle, Lig
 import { motion } from 'framer-motion';
 import ImagePlaceholder from '../components/ImagePlaceholder';
 import { ServiceCard, AlertBox } from '../components/ServiceFeature';
+import SEO, { ArticleSchema, BreadcrumbSchema } from '../components/SEO';
 
 interface GuidePageProps {
   setIsQuoteModalOpen: (open: boolean) => void;
@@ -17,6 +18,17 @@ const GuidePage: React.FC<GuidePageProps> = ({ setIsQuoteModalOpen }) => {
   if (!slug) {
     return (
       <div className="pt-24 md:pt-28 pb-20 md:pb-24 bg-warm-50 min-h-screen">
+        <SEO 
+          title="Expert Roofing Guides"
+          description="Honest, practical roofing advice for Hampshire homeowners. Understand common roof problems and know when to call a professional."
+          canonical="/guides"
+        />
+        <BreadcrumbSchema 
+          items={[
+            { name: 'Home', url: '/' },
+            { name: 'Guides', url: '/guides' }
+          ]}
+        />
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           {/* Hero */}
           <div className="mb-10 md:mb-16 lg:mb-20">
@@ -76,7 +88,7 @@ const GuidePage: React.FC<GuidePageProps> = ({ setIsQuoteModalOpen }) => {
                   <div className="h-40 md:h-48 overflow-hidden relative">
                     <img
                       src="/roofissue1.jpg"
-                      alt={guide.title}
+                      alt={`${guide.title} - visual guide from Hampshire Roof Care`}
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute top-3 left-3 md:top-4 md:left-4">
@@ -154,6 +166,29 @@ const GuidePage: React.FC<GuidePageProps> = ({ setIsQuoteModalOpen }) => {
 
   return (
     <div className="min-h-screen bg-warm-50">
+      <SEO 
+        title={guide.metaTitle?.replace(' | Hampshire Roof Care Company', '') || guide.title}
+        description={guide.metaDescription || guide.subtitle}
+        canonical={`/guides/${guide.slug}`}
+        ogType="article"
+        article={{
+          publishedTime: '2024-01-01',
+          author: 'Hampshire Roof Care',
+        }}
+      />
+      <ArticleSchema 
+        headline={guide.title}
+        description={guide.metaDescription || guide.subtitle}
+        image="/roofissue1.jpg"
+        url={`/guides/${guide.slug}`}
+      />
+      <BreadcrumbSchema 
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Guides', url: '/guides' },
+          { name: guide.title, url: `/guides/${guide.slug}` }
+        ]}
+      />
       {/* Header */}
       <div className="pt-24 md:pt-28 pb-8 md:pb-12 bg-white border-b border-warm-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
@@ -185,7 +220,7 @@ const GuidePage: React.FC<GuidePageProps> = ({ setIsQuoteModalOpen }) => {
         >
           <img
             src="/roofissue1.jpg"
-            alt={guide.title}
+            alt={`${guide.title} - expert roofing advice from Hampshire Roof Care`}
             className="w-full aspect-video object-cover rounded-2xl md:rounded-3xl shadow-soft-lg"
           />
         </motion.div>
@@ -249,12 +284,12 @@ const GuidePage: React.FC<GuidePageProps> = ({ setIsQuoteModalOpen }) => {
               <div className="grid grid-cols-2 gap-3 md:gap-4">
                 <img
                   src="/roofissue1.jpg"
-                  alt="Roof issue example 1"
+                  alt="Close-up of roof damage showing common warning signs homeowners should look for"
                   className="aspect-square object-cover rounded-lg md:rounded-xl"
                 />
                 <img
                   src="/roofissue2.jpg"
-                  alt="Roof issue example 2"
+                  alt="Example of roof deterioration and water damage that requires professional repair"
                   className="aspect-square object-cover rounded-lg md:rounded-xl"
                 />
               </div>

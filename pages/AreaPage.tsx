@@ -5,6 +5,7 @@ import { MapPin, ArrowRight, ArrowLeft, Phone, CheckCircle, Star, Clock, Shield,
 import { motion } from 'framer-motion';
 import ImagePlaceholder, { GalleryPlaceholder } from '../components/ImagePlaceholder';
 import { ServiceCard } from '../components/ServiceFeature';
+import SEO, { BreadcrumbSchema } from '../components/SEO';
 
 interface AreaPageProps {
   setIsQuoteModalOpen: (open: boolean) => void;
@@ -17,6 +18,17 @@ const AreaPage: React.FC<AreaPageProps> = ({ setIsQuoteModalOpen }) => {
   if (!slug) {
     return (
       <div className="pt-28 pb-24 bg-warm-50 min-h-screen">
+        <SEO 
+          title="Areas We Cover"
+          description="Professional roofing services across Hampshire including Southampton, Winchester, New Forest, and Chandler's Ford. Local expertise, free surveys, honest advice."
+          canonical="/areas"
+        />
+        <BreadcrumbSchema 
+          items={[
+            { name: 'Home', url: '/' },
+            { name: 'Areas', url: '/areas' }
+          ]}
+        />
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           {/* Hero */}
           <div className="mb-12 sm:mb-16 lg:mb-20">
@@ -173,6 +185,19 @@ const AreaPage: React.FC<AreaPageProps> = ({ setIsQuoteModalOpen }) => {
 
   return (
     <div className="min-h-screen bg-warm-50 overflow-x-hidden">
+      <SEO 
+        title={area.metaTitle?.replace(' | Hampshire Roof Care Company', '') || area.title}
+        description={area.metaDescription || area.subtitle}
+        canonical={`/areas/${area.slug}`}
+        ogImage={area.image}
+      />
+      <BreadcrumbSchema 
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Areas', url: '/areas' },
+          { name: areaName, url: `/areas/${area.slug}` }
+        ]}
+      />
       {/* Hero Header */}
       <div className="relative min-h-[50vh] flex items-center justify-center overflow-hidden bg-charcoal w-full">
         <div className="absolute inset-0">
@@ -229,7 +254,7 @@ const AreaPage: React.FC<AreaPageProps> = ({ setIsQuoteModalOpen }) => {
               >
                 <img
                   src={area.image}
-                  alt={`${areaName} roofing projects`}
+                  alt={`Professional roofing work completed in ${areaName} by Hampshire Roof Care`}
                   className="w-full max-w-full aspect-[16/9] object-cover rounded-2xl sm:rounded-3xl"
                 />
               </motion.div>
@@ -290,7 +315,7 @@ const AreaPage: React.FC<AreaPageProps> = ({ setIsQuoteModalOpen }) => {
                   <img
                     key={num}
                     src={`/ourwork-${num}.jpg`}
-                    alt={`Local project ${num}`}
+                    alt={`Completed roofing project in ${areaName} - example ${num}`}
                     className="aspect-square w-full object-cover rounded-lg sm:rounded-xl"
                   />
                 ))}

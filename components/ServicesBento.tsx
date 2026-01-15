@@ -40,7 +40,7 @@ const ServicesBento: React.FC<ServicesBentoProps> = ({ setIsQuoteModalOpen }) =>
             className="flex flex-col justify-end"
           >
             <p className="text-lg text-slate-body leading-relaxed">
-              From minor repairs to complete replacements, we handle every aspect of residential roofing. Not sure what you need? We'll guide you with honest advice.
+              From minor repairs to complete replacements, we handle every aspect of residential AND commercial roofing. Not sure what you need? We'll guide you with honest advice.
             </p>
           </motion.div>
         </div>

@@ -9,6 +9,8 @@ interface QuoteModalProps {
 
 const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
   const [step, setStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
   const [formData, setFormData] = useState({
     service: '',
     propertyType: '',
@@ -22,12 +24,43 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
 
   const totalSteps = 5;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    setStep(1);
-    setFormData({ service: '', propertyType: '', roofType: '', name: '', email: '', phone: '', postcode: '', message: '' });
-    onClose();
+    setIsSubmitting(true);
+    setSubmitError('');
+
+    try {
+      const response = await fetch('https://formspree.io/f/xgoovnnw', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          postcode: formData.postcode,
+          service: formData.service,
+          propertyType: formData.propertyType,
+          roofType: formData.roofType,
+          message: formData.message,
+          _subject: `New Quote Request from ${formData.name}`
+        })
+      });
+
+      if (response.ok) {
+        // Reset form and close modal on success
+        setStep(1);
+        setFormData({ service: '', propertyType: '', roofType: '', name: '', email: '', phone: '', postcode: '', message: '' });
+        onClose();
+      } else {
+        setSubmitError('Failed to submit form. Please try again.');
+      }
+    } catch (error) {
+      setSubmitError('Network error. Please check your connection and try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -485,6 +518,13 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                               placeholder="Tell us about your roof issue..."
                             />
                           </div>
+
+                          {/* Error Message */}
+                          {submitError && (
+                            <div className="bg-red-50 border-2 border-red-200 rounded-xl px-4 py-3 text-sm text-red-700">
+                              {submitError}
+                            </div>
+                          )}
                         </motion.div>
                       )}
                     </AnimatePresence>
@@ -553,11 +593,20 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                     {step === 5 && (
                       <button
                         type="submit"
-                        disabled={!canProceedStep5}
+                        disabled={!canProceedStep5 || isSubmitting}
                         className="flex items-center gap-2 bg-primary-600 hover:bg-primary-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white px-6 py-3 rounded-xl font-heading font-semibold transition-all duration-200 group"
                       >
-                        <CheckCircle size={18} />
-                        <span>Book My Survey</span>
+                        {isSubmitting ? (
+                          <>
+                            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                            <span>Submitting...</span>
+                          </>
+                        ) : (
+                          <>
+                            <CheckCircle size={18} />
+                            <span>Book My Survey</span>
+                          </>
+                        )}
                       </button>
                     )}
                   </div>

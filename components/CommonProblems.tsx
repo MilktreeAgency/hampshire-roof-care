@@ -178,12 +178,12 @@ const CommonProblems: React.FC<CommonProblemsProps> = ({ setIsQuoteModalOpen }) 
             <div className="grid grid-cols-2 gap-4">
               <img
                 src="/roofissue1.jpg"
-                alt="Roof damage example"
+                alt="Damaged roof tiles showing signs of wear and water damage in Hampshire"
                 className="rounded-2xl aspect-square object-cover"
               />
               <img
                 src="/roofissue2.jpg"
-                alt="Roof damage example"
+                alt="Common roof problems including cracked tiles and deteriorating cement work"
                 className="rounded-2xl aspect-square object-cover mt-8"
               />
             </div>
