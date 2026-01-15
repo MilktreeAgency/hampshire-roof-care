@@ -199,7 +199,7 @@ const AreaPage: React.FC<AreaPageProps> = ({ setIsQuoteModalOpen }) => {
         ]}
       />
       {/* Hero Header */}
-      <div className="relative min-h-[50vh] flex items-center justify-center overflow-hidden bg-charcoal w-full">
+      <div className="relative min-h-[50vh] pt-16 pb-16 flex items-center justify-center overflow-hidden bg-charcoal w-full">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-charcoal via-charcoal/95 to-charcoal/90" />
           <div className="absolute inset-0 bg-mesh-pattern opacity-5" />
