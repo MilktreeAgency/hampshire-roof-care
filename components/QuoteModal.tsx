@@ -11,6 +11,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState('');
+  const [showSuccess, setShowSuccess] = useState(false);
   const [formData, setFormData] = useState({
     service: '',
     propertyType: '',
@@ -49,10 +50,8 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
       });
 
       if (response.ok) {
-        // Reset form and close modal on success
-        setStep(1);
-        setFormData({ service: '', propertyType: '', roofType: '', name: '', email: '', phone: '', postcode: '', message: '' });
-        onClose();
+        // Show success message
+        setShowSuccess(true);
       } else {
         setSubmitError('Failed to submit form. Please try again.');
       }
@@ -88,6 +87,9 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
 
   const handleClose = () => {
     setStep(1);
+    setShowSuccess(false);
+    setSubmitError('');
+    setFormData({ service: '', propertyType: '', roofType: '', name: '', email: '', phone: '', postcode: '', message: '' });
     onClose();
   };
 
@@ -167,28 +169,98 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                   
                   <div className="pr-8">
                     <h2 className="text-xl md:text-2xl font-heading font-bold text-white mb-1">
-                      Book Your Free Survey
+                      {showSuccess ? 'Thank You!' : 'Book Your Free Survey'}
                     </h2>
                     <p className="text-primary-100 text-sm">
-                      Get expert advice within 24 hours
+                      {showSuccess ? 'Your enquiry has been received' : 'Get expert advice within 24 hours'}
                     </p>
                   </div>
 
-                  {/* Progress Bar */}
-                  <div className="mt-4 flex items-center gap-2">
-                    {[1, 2, 3, 4, 5].map((s) => (
-                      <div
-                        key={s}
-                        className={`h-1.5 flex-1 rounded-full transition-all duration-500 ${
-                          s <= step ? 'bg-white' : 'bg-white/30'
-                        }`}
-                      />
-                    ))}
-                  </div>
-                  <p className="text-white/70 text-xs mt-2">Step {step} of {totalSteps}</p>
+                  {/* Progress Bar - Only show if not success */}
+                  {!showSuccess && (
+                    <>
+                      <div className="mt-4 flex items-center gap-2">
+                        {[1, 2, 3, 4, 5].map((s) => (
+                          <div
+                            key={s}
+                            className={`h-1.5 flex-1 rounded-full transition-all duration-500 ${
+                              s <= step ? 'bg-white' : 'bg-white/30'
+                            }`}
+                          />
+                        ))}
+                      </div>
+                      <p className="text-white/70 text-xs mt-2">Step {step} of {totalSteps}</p>
+                    </>
+                  )}
                 </div>
 
                 {/* Form Content */}
+                {showSuccess ? (
+                  /* Success Message */
+                  <div className="p-6 md:p-8 min-h-[420px] flex flex-col items-center justify-center text-center">
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ 
+                        type: "spring",
+                        stiffness: 200,
+                        damping: 15,
+                        delay: 0.1
+                      }}
+                      className="w-20 h-20 rounded-full bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center mb-6 shadow-lg shadow-green-200"
+                    >
+                      <CheckCircle size={40} className="text-white" strokeWidth={2.5} />
+                    </motion.div>
+
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3 }}
+                      className="max-w-md"
+                    >
+                      <h3 className="text-2xl font-heading font-bold text-charcoal mb-4">
+                        Your Enquiry Has Been Received
+                      </h3>
+                      
+                      <p className="text-slate-muted leading-relaxed mb-6">
+                        A member of the team will be in touch shortly to discuss your project in more detail.
+                      </p>
+
+                      <div className="bg-primary-50 border-2 border-primary-100 rounded-2xl p-6 mb-6">
+                        <p className="text-sm text-charcoal font-medium mb-3">
+                          What happens next?
+                        </p>
+                        <ul className="space-y-3 text-sm text-slate-muted text-left">
+                          <li className="flex items-start gap-3">
+                            <div className="w-5 h-5 rounded-full bg-primary-600 flex items-center justify-center flex-shrink-0 mt-0.5">
+                              <CheckCircle size={14} className="text-white" />
+                            </div>
+                            <span>We'll review your project requirements</span>
+                          </li>
+                          <li className="flex items-start gap-3">
+                            <div className="w-5 h-5 rounded-full bg-primary-600 flex items-center justify-center flex-shrink-0 mt-0.5">
+                              <CheckCircle size={14} className="text-white" />
+                            </div>
+                            <span>A team member will contact you within 24 hours</span>
+                          </li>
+                          <li className="flex items-start gap-3">
+                            <div className="w-5 h-5 rounded-full bg-primary-600 flex items-center justify-center flex-shrink-0 mt-0.5">
+                              <CheckCircle size={14} className="text-white" />
+                            </div>
+                            <span>We'll arrange your free, no-obligation survey</span>
+                          </li>
+                        </ul>
+                      </div>
+
+                      <button
+                        onClick={handleClose}
+                        className="w-full bg-primary-600 hover:bg-primary-700 text-white px-6 py-4 rounded-xl font-heading font-semibold transition-all duration-200 shadow-lg shadow-primary-200 hover:shadow-xl"
+                      >
+                        Close
+                      </button>
+                    </motion.div>
+                  </div>
+                ) : (
                 <form onSubmit={handleSubmit}>
                   <div className="p-6 md:p-8 min-h-[420px] relative overflow-hidden">
                     <AnimatePresence mode="wait" custom={step}>
@@ -611,6 +683,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                     )}
                   </div>
                 </form>
+                )}
 
                 {/* Trust Footer */}
                 <div className="bg-warm-50 px-6 md:px-8 py-4 border-t border-warm-200">
