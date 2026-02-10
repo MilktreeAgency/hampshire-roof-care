@@ -8,7 +8,6 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ setIsQuoteModalOpen }) => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,17 +21,23 @@ const Hero: React.FC<HeroProps> = ({ setIsQuoteModalOpen }) => {
     <section className="relative min-h-screen flex items-center justify-center pt-16 md:pt-20 overflow-hidden bg-charcoal">
       {/* Background Video with Overlay */}
       <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          onCanPlay={() => setVideoLoaded(true)}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
-          style={{ minWidth: '100%', minHeight: '100%' }}
-        >
-          <source src="https://res.cloudinary.com/dkew5dwgo/video/upload/v1767870607/Hampshire_Roofcare_Heros_icc2kl.mp4" type="video/mp4" />
-        </video>
+        {/* Vimeo Embed - Fully responsive and covering entire viewport */}
+        <div className="absolute inset-0 w-full h-full overflow-hidden">
+          <iframe 
+            src="https://player.vimeo.com/video/1163642151?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1&amp;background=1" 
+            frameBorder="0" 
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+            referrerPolicy="strict-origin-when-cross-origin" 
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+            style={{
+              width: '100vw',
+              height: '56.25vw', // 16:9 aspect ratio
+              minHeight: '100vh',
+              minWidth: '177.77vh', // 16:9 aspect ratio
+            }}
+            title="Hampshire Roofcare Heros"
+          />
+        </div>
         {/* Advanced Gradient Overlay - Very light to show video clearly */}
         <div className="absolute inset-0 bg-gradient-to-r from-charcoal/65 via-charcoal/50 to-charcoal/40 md:from-charcoal/60 md:via-charcoal/35 md:to-charcoal/15" />
         <div className="absolute inset-0 bg-gradient-to-t from-charcoal/50 via-charcoal/15 to-transparent md:from-charcoal/45 md:via-transparent md:to-transparent" />
