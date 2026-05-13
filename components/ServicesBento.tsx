@@ -40,7 +40,7 @@ const ServicesBento: React.FC<ServicesBentoProps> = ({ setIsQuoteModalOpen }) =>
             className="flex flex-col justify-end"
           >
             <p className="text-lg text-slate-body leading-relaxed">
-              From minor repairs to complete replacements, we handle every aspect of residential AND commercial roofing. Not sure what you need? We'll guide you with honest advice.
+              From minor repairs to complete replacements, we handle every aspect of domestic and commercial properties. With a wealth of experience working on listed public buildings and churches, you can rest assured that your property is in safe hands.
             </p>
           </motion.div>
         </div>
