@@ -1,5 +1,7 @@
+import NotFound from './NotFound';
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { guideServices } from '../lib/page-guidance';
 import { guides, services } from '../lib/content';
 import { ArrowLeft, ArrowRight, BookOpen, Phone, AlertTriangle, CheckCircle, Lightbulb, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -155,14 +157,8 @@ const GuidePage: React.FC<GuidePageProps> = ({ setIsQuoteModalOpen }) => {
   const guide = guides.find(g => g.slug === slug);
   const otherGuides = guides.filter(g => g.slug !== slug).slice(0, 3);
 
-  if (!guide) {
-    return (
-      <div className="pt-32 px-4 sm:px-6 text-center min-h-screen bg-warm-50">
-        <h1 className="font-heading text-2xl font-bold text-charcoal mb-4">Article not found</h1>
-        <Link to="/guides" className="text-primary-600 hover:underline">Back to guides</Link>
-      </div>
-    );
-  }
+  if (!guide) return <NotFound />;
+  const relatedServices = (guideServices[guide.slug] || []).flatMap(slug => services.filter(service => service.slug === slug));
 
   return (
     <div className="min-h-screen bg-warm-50">
@@ -172,7 +168,6 @@ const GuidePage: React.FC<GuidePageProps> = ({ setIsQuoteModalOpen }) => {
         canonical={`/guides/${guide.slug}`}
         ogType="article"
         article={{
-          publishedTime: '2024-01-01',
           author: 'Hampshire Roof Care',
         }}
       />
@@ -230,7 +225,7 @@ const GuidePage: React.FC<GuidePageProps> = ({ setIsQuoteModalOpen }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 md:py-12 lg:py-20">
         <div className="grid lg:grid-cols-3 gap-8 md:gap-12 lg:gap-16">
           {/* Main Content */}
-          <div className="lg:col-span-2 order-2 lg:order-1">
+          <div className="lg:col-span-2">
             {/* Key Takeaways */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -268,7 +263,7 @@ const GuidePage: React.FC<GuidePageProps> = ({ setIsQuoteModalOpen }) => {
               className="bg-white rounded-2xl md:rounded-3xl p-5 md:p-8 lg:p-12 border border-warm-200 shadow-soft"
             >
               <div 
-                className="prose prose-sm md:prose-lg max-w-none prose-headings:font-heading prose-headings:text-charcoal prose-headings:font-bold prose-p:text-slate-body prose-li:text-slate-body prose-strong:text-charcoal prose-a:text-primary-600 prose-h3:text-xl md:prose-h3:text-2xl prose-h4:text-lg md:prose-h4:text-xl" 
+                className="prose prose-sm md:prose-lg max-w-none prose-headings:font-heading prose-headings:text-charcoal prose-headings:font-bold prose-p:text-slate-body prose-li:text-slate-body prose-strong:text-charcoal prose-a:text-primary-600 prose-h2:text-xl md:prose-h2:text-2xl prose-h3:text-lg md:prose-h3:text-xl"
                 dangerouslySetInnerHTML={{ __html: guide.content }} 
               />
             </motion.div>
@@ -331,7 +326,7 @@ const GuidePage: React.FC<GuidePageProps> = ({ setIsQuoteModalOpen }) => {
           </div>
 
           {/* Sidebar - Shows first on mobile, sticky on desktop */}
-          <div className="lg:col-span-1 order-1 lg:order-2">
+          <div className="lg:col-span-1">
             <div className="lg:sticky lg:top-28 space-y-4 md:space-y-6">
               {/* Quick Help */}
               <motion.div
@@ -366,11 +361,11 @@ const GuidePage: React.FC<GuidePageProps> = ({ setIsQuoteModalOpen }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className="hidden lg:block bg-surface rounded-3xl p-6 border border-warm-200"
+                className="bg-surface rounded-3xl p-6 border border-warm-200"
               >
                 <h4 className="font-heading font-bold text-charcoal text-lg mb-4">Related Services</h4>
                 <div className="space-y-3">
-                  {services.slice(0, 3).map((s) => (
+                  {relatedServices.map((s) => (
                     <ServiceCard
                       key={s.slug}
                       slug={s.slug}

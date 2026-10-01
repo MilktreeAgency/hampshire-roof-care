@@ -1,4 +1,10 @@
-import { useEffect } from 'react';
+import { createContext, useContext, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
+export const BASE_URL = 'https://www.hampshireroofcare.co.uk';
+const SITE_NAME = 'Hampshire Roof Care';
+const DEFAULT_TITLE = 'Roofing Services in Hampshire | Hampshire Roof Care';
+const DEFAULT_DESCRIPTION = 'Roof repairs, replacements and leadwork across Southampton, Winchester, the New Forest and Chandler’s Ford. Contact Hampshire Roof Care for a free survey.';
 
 interface SEOProps {
   title?: string;
@@ -6,132 +12,62 @@ interface SEOProps {
   canonical?: string;
   ogImage?: string;
   ogType?: 'website' | 'article' | 'local_business';
-  article?: {
-    publishedTime?: string;
-    modifiedTime?: string;
-    author?: string;
-  };
+  article?: { publishedTime?: string; modifiedTime?: string; author?: string };
   noindex?: boolean;
 }
+export interface HeadData {
+  title: string;
+  canonical: string;
+  tags: Array<{ key: string; value: string; property?: boolean }>;
+}
+// A fresh collector is supplied for each static render; browser navigation uses the same data.
+export const SEOContext = createContext<((head: HeadData) => void) | null>(null);
 
-const DEFAULT_TITLE = 'Hampshire Roof Care | Expert Roofing Services in Hampshire';
-const DEFAULT_DESCRIPTION = 'Professional roof repairs, replacements, and maintenance across Hampshire. Free site surveys, honest advice, and quality workmanship. Serving Southampton, Winchester, New Forest, and surrounding areas.';
-const DEFAULT_IMAGE = '/og-image.jpg';
-const SITE_NAME = 'Hampshire Roof Care';
-const BASE_URL = 'https://hampshireroofcare.co.uk';
-
-/**
- * SEO Component - Updates document head with meta tags for search engines and social sharing
- * 
- * Uses direct DOM manipulation for compatibility with HashRouter SPAs
- * For optimal SEO, consider migrating to BrowserRouter with server-side rendering
- */
-const SEO: React.FC<SEOProps> = ({
-  title,
-  description,
-  canonical,
-  ogImage,
-  ogType = 'website',
-  article,
-  noindex = false,
-}) => {
-  const fullTitle = title ? `${title} | ${SITE_NAME}` : DEFAULT_TITLE;
-  const metaDescription = description || DEFAULT_DESCRIPTION;
-  const ogImageUrl = ogImage || DEFAULT_IMAGE;
-  const canonicalUrl = canonical ? `${BASE_URL}${canonical}` : undefined;
-
+const SEO: React.FC<SEOProps> = ({ title, description = DEFAULT_DESCRIPTION, canonical,
+  ogImage = '/og-image.jpg', ogType = 'website', article, noindex = false }) => {
+  const { pathname } = useLocation();
+  const collect = useContext(SEOContext);
+  const pageTitle = title?.replace(/\s*\|\s*Hampshire Roof Care(?: Company)?$/i, '').trim();
+  const fullTitle = pageTitle ? `${pageTitle} | ${SITE_NAME}` : DEFAULT_TITLE;
+  const url = new URL(canonical || pathname, BASE_URL).href;
+  const image = new URL(ogImage, BASE_URL).href;
+  const head: HeadData = {
+    title: fullTitle, canonical: url,
+    tags: [
+      { key: 'description', value: description },
+      { key: 'robots', value: noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large' },
+      ...Object.entries({
+        'og:title': fullTitle, 'og:description': description, 'og:url': url,
+        'og:type': ogType === 'local_business' ? 'business.business' : ogType,
+        'og:site_name': SITE_NAME, 'og:locale': 'en_GB', 'og:image': image,
+        ...(ogType === 'article' && article?.publishedTime ? { 'article:published_time': article.publishedTime } : {}),
+        ...(ogType === 'article' && article?.modifiedTime ? { 'article:modified_time': article.modifiedTime } : {}),
+        ...(ogType === 'article' && article?.author ? { 'article:author': article.author } : {}),
+      }).map(([key, value]) => ({ key, value, property: true })),
+      ...Object.entries({ 'twitter:card': 'summary_large_image', 'twitter:title': fullTitle,
+        'twitter:description': description, 'twitter:image': image, 'twitter:url': url,
+      }).map(([key, value]) => ({ key, value })),
+    ],
+  };
+  if (collect) collect(head);
+  const signature = JSON.stringify(head);
   useEffect(() => {
-    // Update document title
-    document.title = fullTitle;
-
-    // Helper function to update or create meta tags
-    const setMetaTag = (name: string, content: string, isProperty = false) => {
-      const attribute = isProperty ? 'property' : 'name';
-      let element = document.querySelector(`meta[${attribute}="${name}"]`) as HTMLMetaElement;
-      
-      if (!element) {
-        element = document.createElement('meta');
-        element.setAttribute(attribute, name);
-        document.head.appendChild(element);
-      }
-      element.setAttribute('content', content);
-    };
-
-    // Helper function to update or create link tags
-    const setLinkTag = (rel: string, href: string) => {
-      let element = document.querySelector(`link[rel="${rel}"]`) as HTMLLinkElement;
-      
-      if (!element) {
-        element = document.createElement('link');
-        element.setAttribute('rel', rel);
-        document.head.appendChild(element);
-      }
-      element.setAttribute('href', href);
-    };
-
-    // Basic meta tags
-    setMetaTag('description', metaDescription);
-    
-    // Robots
-    if (noindex) {
-      setMetaTag('robots', 'noindex, nofollow');
-    } else {
-      setMetaTag('robots', 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
+    const data: HeadData = JSON.parse(signature);
+    document.title = data.title;
+    document.head.querySelectorAll('[data-seo]').forEach(tag => tag.remove());
+    const link = document.createElement('link');
+    link.rel = 'canonical'; link.href = data.canonical; link.dataset.seo = '';
+    document.head.appendChild(link);
+    for (const tag of data.tags) {
+      const meta = document.createElement('meta');
+      meta.setAttribute(tag.property ? 'property' : 'name', tag.key);
+      meta.content = tag.value; meta.dataset.seo = '';
+      document.head.appendChild(meta);
     }
-
-    // Open Graph tags
-    setMetaTag('og:title', fullTitle, true);
-    setMetaTag('og:description', metaDescription, true);
-    setMetaTag('og:type', ogType === 'local_business' ? 'business.business' : ogType, true);
-    setMetaTag('og:site_name', SITE_NAME, true);
-    
-    // Ensure absolute URL for og:image (required for social platforms)
-    const absoluteImageUrl = ogImageUrl.startsWith('http') ? ogImageUrl : `${BASE_URL}${ogImageUrl}`;
-    setMetaTag('og:image', absoluteImageUrl, true);
-    setMetaTag('og:image:secure_url', absoluteImageUrl, true); // HTTPS version for better compatibility
-    setMetaTag('og:image:width', '1200', true);
-    setMetaTag('og:image:height', '630', true);
-    setMetaTag('og:image:type', 'image/jpeg', true);
-    setMetaTag('og:locale', 'en_GB', true);
-    
-    if (canonicalUrl) {
-      setMetaTag('og:url', canonicalUrl, true);
-      setLinkTag('canonical', canonicalUrl);
-    }
-
-    // Twitter Card tags
-    setMetaTag('twitter:card', 'summary_large_image');
-    setMetaTag('twitter:title', fullTitle);
-    setMetaTag('twitter:description', metaDescription);
-    setMetaTag('twitter:image', ogImageUrl.startsWith('http') ? ogImageUrl : `${BASE_URL}${ogImageUrl}`);
-
-    // Article-specific meta tags
-    if (ogType === 'article' && article) {
-      if (article.publishedTime) {
-        setMetaTag('article:published_time', article.publishedTime, true);
-      }
-      if (article.modifiedTime) {
-        setMetaTag('article:modified_time', article.modifiedTime, true);
-      }
-      if (article.author) {
-        setMetaTag('article:author', article.author, true);
-      }
-    }
-
-    // Geo tags for local SEO
-    setMetaTag('geo.region', 'GB-HAM');
-    setMetaTag('geo.placename', 'Hampshire');
-
-  }, [fullTitle, metaDescription, canonicalUrl, ogImageUrl, ogType, article, noindex]);
-
-  return null; // This component only manages head tags, renders nothing
+  }, [signature]);
+  return null;
 };
-
 export default SEO;
-
-/**
- * JSON-LD Schema Helper Components
- */
 
 interface LocalBusinessSchemaProps {
   name?: string;
@@ -169,6 +105,7 @@ export const LocalBusinessSchema: React.FC<LocalBusinessSchemaProps> = ({
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'RoofingContractor',
+    '@id': `${BASE_URL}/#organization`,
     name,
     description,
     telephone: `+44${telephone.replace(/^0/, '')}`,
@@ -177,40 +114,20 @@ export const LocalBusinessSchema: React.FC<LocalBusinessSchemaProps> = ({
     image,
     priceRange,
     areaServed: areaServed.map((area) => ({
-      '@type': 'City',
+      '@type': 'Place',
       name: area,
     })),
     address: {
       '@type': 'PostalAddress',
       ...address,
     },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: 50.9097,
-      longitude: -1.4044,
-    },
-    openingHoursSpecification: [
-      {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-        opens: '08:00',
-        closes: '18:00',
-      },
-    ],
-    sameAs: [],
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '5',
-      ratingCount: '100',
-      bestRating: '5',
-      worstRating: '1',
-    },
+
   };
 
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }}
     />
   );
 };
@@ -239,11 +156,12 @@ export const ServiceSchema: React.FC<ServiceSchemaProps> = ({
     description,
     provider: {
       '@type': 'RoofingContractor',
+      '@id': `${BASE_URL}/#organization`,
       name: provider,
       url: BASE_URL,
     },
     areaServed: areaServed.map((area) => ({
-      '@type': 'City',
+      '@type': 'Place',
       name: area,
     })),
     ...(image && { image: image.startsWith('http') ? image : `${BASE_URL}${image}` }),
@@ -253,7 +171,7 @@ export const ServiceSchema: React.FC<ServiceSchemaProps> = ({
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }}
     />
   );
 };
@@ -279,7 +197,7 @@ export const FAQSchema: React.FC<FAQSchemaProps> = ({ faqs }) => {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }}
     />
   );
 };
@@ -299,7 +217,7 @@ export const ArticleSchema: React.FC<ArticleSchemaProps> = ({
   description,
   image,
   url,
-  datePublished = '2024-01-01',
+  datePublished,
   dateModified,
   author = 'Hampshire Roof Care',
 }) => {
@@ -331,7 +249,7 @@ export const ArticleSchema: React.FC<ArticleSchemaProps> = ({
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }}
     />
   );
 };
@@ -355,7 +273,7 @@ export const BreadcrumbSchema: React.FC<BreadcrumbSchemaProps> = ({ items }) => 
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }}
     />
   );
 };

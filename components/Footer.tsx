@@ -1,3 +1,4 @@
+import { openCookieSettings } from './AnalyticsConsent';
 import React from 'react';
 import { Home, Phone, Mail, MapPin, ArrowRight, Star, Shield, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -140,6 +141,7 @@ const Footer: React.FC<FooterProps> = ({ setIsQuoteModalOpen }) => {
             <Link to="/cookie-policy" className="text-white/40 hover:text-white/70 transition-colors">
               Cookie Policy
             </Link>
+            <button onClick={openCookieSettings} className="text-white/60 hover:text-white underline">Cookie settings</button>
             <Link to="/terms" className="text-white/40 hover:text-white/70 transition-colors">
               Terms & Conditions
             </Link>

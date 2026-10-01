@@ -99,7 +99,7 @@ const ImagePlaceholder: React.FC<ImagePlaceholderProps> = ({
         >
           <Icon 
             size={config.iconSize} 
-            className={`${isDark ? 'text-white/60' : 'text-primary-400'} group-hover:${isDark ? 'text-white/80' : 'text-primary-500'} transition-colors`}
+            className={`${isDark ? 'text-white/60' : 'text-primary-400'} ${isDark ? 'group-hover:text-white/80' : 'group-hover:text-primary-500'} transition-colors`}
             strokeWidth={1.5}
           />
         </div>

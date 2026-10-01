@@ -1,3 +1,5 @@
+import { trackEvent } from '../lib/analytics';
+import { submitEnquiry } from '../lib/enquiries';
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, MessageSquare, ArrowRight, ArrowLeft, CheckCircle, Home, Building2, Castle, Warehouse, Layers, Triangle, Square, CircleDot, Wrench, Hammer, Droplets, Shield } from 'lucide-react';
@@ -27,34 +29,14 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
     setIsSubmitting(true);
     setSubmitError('');
 
     try {
-      const response = await fetch('https://formspree.io/f/xgoovnnw', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          postcode: formData.postcode,
-          service: formData.service,
-          propertyType: formData.propertyType,
-          roofType: formData.roofType,
-          message: formData.message,
-          _subject: `New Quote Request from ${formData.name}`
-        })
-      });
-
-      if (response.ok) {
-        // Show success message
-        setShowSuccess(true);
-      } else {
-        setSubmitError('Failed to submit form. Please try again.');
-      }
+      await submitEnquiry(formData);
+      trackEvent('generate_lead', 'quote');
+      setShowSuccess(true);
     } catch (error) {
       setSubmitError('Network error. Please check your connection and try again.');
     } finally {
@@ -688,7 +670,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                 {/* Trust Footer */}
                 <div className="bg-warm-50 px-6 md:px-8 py-4 border-t border-warm-200">
                   <p className="text-xs text-slate-muted text-center">
-                    🔒 Your information is secure and will never be shared with third parties.
+                    🔒 Your details are used to respond to your enquiry. See our privacy policy.
                   </p>
                 </div>
               </div>

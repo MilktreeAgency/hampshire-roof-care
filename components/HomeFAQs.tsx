@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ChevronDown, HelpCircle, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -116,6 +116,8 @@ const HomeFAQs: React.FC<HomeFAQsProps> = ({ setIsQuoteModalOpen }) => {
               >
                 <button
                   onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                  aria-expanded={openIndex === index}
+                  aria-controls={`home-faq-${index}`}
                   className="w-full flex items-center justify-between p-6 text-left hover:bg-surface transition-colors"
                 >
                   <h3 className="font-heading text-lg font-semibold text-charcoal pr-4">
@@ -132,24 +134,10 @@ const HomeFAQs: React.FC<HomeFAQsProps> = ({ setIsQuoteModalOpen }) => {
                     />
                   </div>
                 </button>
-                <AnimatePresence>
-                  {openIndex === index && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-6 pb-6 pt-0">
-                        <div className="h-px bg-warm-200 mb-4" />
-                        <p className="text-slate-body leading-relaxed">
-                          {faq.a}
-                        </p>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                <div id={`home-faq-${index}`} hidden={openIndex !== index} className="px-6 pb-6">
+                  <div className="h-px bg-warm-200 mb-4" />
+                  <p className="text-slate-body leading-relaxed">{faq.a}</p>
+                </div>
               </motion.div>
             ))}
           </div>

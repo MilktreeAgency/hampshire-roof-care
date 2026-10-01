@@ -1,3 +1,5 @@
+import { roofingGallery } from '../lib/page-guidance';
+import NotFound from './NotFound';
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { areas, services } from '../lib/content';
@@ -164,24 +166,11 @@ const AreaPage: React.FC<AreaPageProps> = ({ setIsQuoteModalOpen }) => {
   // Individual Area Page
   const area = areas.find(a => a.slug === slug);
 
-  if (!area) {
-    return (
-      <div className="pt-32 px-6 text-center min-h-screen bg-warm-50">
-        <h1 className="font-heading text-2xl font-bold text-charcoal mb-4">Area not found</h1>
-        <Link to="/areas" className="text-primary-600 hover:underline">Back to areas</Link>
-      </div>
-    );
-  }
+  if (!area) return <NotFound />;
 
   const areaName = area.title.replace('Roofer in ', '');
   const otherAreas = areas.filter(a => a.slug !== slug);
 
-  // Area-specific testimonial (simulated)
-  const localTestimonial = {
-    text: `Exceptional work on our roof. Honest advice, fair pricing, and quality workmanship. Would highly recommend to anyone in ${areaName}.`,
-    author: 'Local Customer',
-    rating: 5
-  };
 
   return (
     <div className="min-h-screen bg-warm-50 overflow-x-hidden">
@@ -254,7 +243,7 @@ const AreaPage: React.FC<AreaPageProps> = ({ setIsQuoteModalOpen }) => {
               >
                 <img
                   src={area.image}
-                  alt={`Professional roofing work completed in ${areaName} by Hampshire Roof Care`}
+                  alt="Roofing work from the Hampshire Roof Care gallery"
                   className="w-full max-w-full aspect-[16/9] object-cover rounded-2xl sm:rounded-3xl"
                 />
               </motion.div>
@@ -306,42 +295,25 @@ const AreaPage: React.FC<AreaPageProps> = ({ setIsQuoteModalOpen }) => {
                   <Building className="text-primary-600" size={24} />
                 </div>
                 <div className="min-w-0">
-                  <h3 className="font-heading text-xl sm:text-2xl font-bold text-charcoal">Local Projects</h3>
-                  <p className="text-slate-muted text-sm sm:text-base truncate">Work completed in {areaName}</p>
+                  <h3 className="font-heading text-xl sm:text-2xl font-bold text-charcoal">Roofing Gallery</h3>
+                  <p className="text-slate-muted text-sm sm:text-base truncate">Examples from our roofing work</p>
                 </div>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-                {[1, 2, 3, 4].map((num) => (
+                {roofingGallery.map((photo) => (
                   <img
-                    key={num}
-                    src={`/ourwork-${num}.jpg`}
-                    alt={`Completed roofing project in ${areaName} - example ${num}`}
+                    key={photo.src}
+                    src={photo.src}
+                    alt={photo.alt}
+                    loading="lazy"
+                    decoding="async"
                     className="aspect-square w-full object-cover rounded-lg sm:rounded-xl"
                   />
                 ))}
               </div>
             </motion.div>
 
-            {/* Local Testimonial */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="bg-charcoal rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 relative overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-mesh-pattern opacity-5" />
-              <div className="relative">
-                <div className="flex gap-1 mb-6">
-                  {[...Array(localTestimonial.rating)].map((_, i) => (
-                    <Star key={i} size={20} className="text-copper" fill="currentColor" />
-                  ))}
-                </div>
-                <p className="text-white/90 text-base sm:text-xl leading-relaxed mb-6 break-words">
-                  "{localTestimonial.text}"
-                </p>
-                <p className="text-white/50 font-medium text-sm sm:text-base break-words">— {localTestimonial.author}, {areaName}</p>
-              </div>
-            </motion.div>
+
           </div>
           
           {/* Sidebar */}

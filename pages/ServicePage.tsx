@@ -1,5 +1,8 @@
+import { roofingGallery } from '../lib/page-guidance';
+import NotFound from './NotFound';
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
+import ServiceGuidance from '../components/ServiceGuidance';
 import { services } from '../lib/content';
 import { ArrowLeft, ArrowRight, CheckCircle, Phone, Clock, Shield, AlertTriangle, Wrench, FileCheck } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -45,7 +48,7 @@ const ServicePage: React.FC<ServicePageProps> = ({ setIsQuoteModalOpen }) => {
               transition={{ delay: 0.1 }}
               className="font-heading text-4xl lg:text-6xl font-bold text-charcoal tracking-tight mb-6"
             >
-              Complete Roofing Solutions
+              Roofing Services in Hampshire
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -116,14 +119,7 @@ const ServicePage: React.FC<ServicePageProps> = ({ setIsQuoteModalOpen }) => {
   const service = services.find(s => s.slug === slug);
   const otherServices = services.filter(s => s.slug !== slug);
 
-  if (!service) {
-    return (
-      <div className="pt-32 px-6 text-center min-h-screen bg-warm-50">
-        <h1 className="font-heading text-2xl font-bold text-charcoal mb-4">Service not found</h1>
-        <Link to="/services" className="text-primary-600 hover:underline">Back to services</Link>
-      </div>
-    );
-  }
+  if (!service) return <NotFound />;
 
   return (
     <div className="min-h-screen bg-warm-50">
@@ -165,7 +161,7 @@ const ServicePage: React.FC<ServicePageProps> = ({ setIsQuoteModalOpen }) => {
             <span className="block px-3 py-1 md:px-4 md:py-1.5 bg-primary-600/20 text-primary-300 rounded-full text-xs md:text-sm font-semibold mb-4 md:mb-6 mx-auto w-fit">
               Professional Service
             </span>
-            <h1 className="font-heading text-3xl md:text-4xl lg:text-6xl font-bold mb-4 md:mb-6 tracking-tight px-4">{service.title}</h1>
+            <h1 className="font-heading text-3xl md:text-4xl lg:text-6xl font-bold mb-4 md:mb-6 tracking-tight px-4">{service.title} in Hampshire</h1>
             <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed px-4">{service.subtitle}</p>
             
             {/* Quick Actions */}
@@ -257,6 +253,8 @@ const ServicePage: React.FC<ServicePageProps> = ({ setIsQuoteModalOpen }) => {
               />
             </motion.div>
 
+            <ServiceGuidance slug={service.slug} />
+
             {/* Photo Evidence Gallery */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -274,11 +272,13 @@ const ServicePage: React.FC<ServicePageProps> = ({ setIsQuoteModalOpen }) => {
                 </div>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {[1, 2, 3, 4].map((num) => (
+                {roofingGallery.map((photo) => (
                   <img
-                    key={num}
-                    src={`/ourwork-${num}.jpg`}
-                    alt={`Hampshire Roof Care completed ${service.title.toLowerCase()} project ${num}`}
+                    key={photo.src}
+                    src={photo.src}
+                    alt={photo.alt}
+                    loading="lazy"
+                    decoding="async"
                     className="aspect-square object-cover rounded-xl"
                   />
                 ))}
