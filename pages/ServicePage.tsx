@@ -1,3 +1,4 @@
+import NotFound from './NotFound';
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { services } from '../lib/content';
@@ -116,14 +117,7 @@ const ServicePage: React.FC<ServicePageProps> = ({ setIsQuoteModalOpen }) => {
   const service = services.find(s => s.slug === slug);
   const otherServices = services.filter(s => s.slug !== slug);
 
-  if (!service) {
-    return (
-      <div className="pt-32 px-6 text-center min-h-screen bg-warm-50">
-        <h1 className="font-heading text-2xl font-bold text-charcoal mb-4">Service not found</h1>
-        <Link to="/services" className="text-primary-600 hover:underline">Back to services</Link>
-      </div>
-    );
-  }
+  if (!service) return <NotFound />;
 
   return (
     <div className="min-h-screen bg-warm-50">

@@ -5,19 +5,29 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/preview.mjs",
+    "typecheck": "tsc --noEmit",
+    "seo:check": "node scripts/check-seo.mjs",
+    "check": "npm run typecheck && npm run test:analytics && npm run build && npm run seo:check",
+    "test:analytics": "node scripts/test-analytics.mjs"
   },
   "dependencies": {
     "framer-motion": "10.16.4",
+    "lucide-react": "0.263.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "lucide-react": "0.263.1",
-    "react-router-dom": "6.14.2"
+    "react-router-dom": "6.30.6"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.19",
     "@types/node": "^22.14.0",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
     "@vitejs/plugin-react": "^5.0.0",
+    "autoprefixer": "^10.6.1",
+    "postcss": "^8.5.28",
+    "tailwindcss": "^3.4.19",
     "typescript": "~5.8.2",
     "vite": "^6.2.0"
   }

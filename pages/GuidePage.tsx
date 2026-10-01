@@ -1,3 +1,4 @@
+import NotFound from './NotFound';
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { guides, services } from '../lib/content';
@@ -155,14 +156,7 @@ const GuidePage: React.FC<GuidePageProps> = ({ setIsQuoteModalOpen }) => {
   const guide = guides.find(g => g.slug === slug);
   const otherGuides = guides.filter(g => g.slug !== slug).slice(0, 3);
 
-  if (!guide) {
-    return (
-      <div className="pt-32 px-4 sm:px-6 text-center min-h-screen bg-warm-50">
-        <h1 className="font-heading text-2xl font-bold text-charcoal mb-4">Article not found</h1>
-        <Link to="/guides" className="text-primary-600 hover:underline">Back to guides</Link>
-      </div>
-    );
-  }
+  if (!guide) return <NotFound />;
 
   return (
     <div className="min-h-screen bg-warm-50">
@@ -172,7 +166,6 @@ const GuidePage: React.FC<GuidePageProps> = ({ setIsQuoteModalOpen }) => {
         canonical={`/guides/${guide.slug}`}
         ogType="article"
         article={{
-          publishedTime: '2024-01-01',
           author: 'Hampshire Roof Care',
         }}
       />

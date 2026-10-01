@@ -1,20 +1,21 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Hampshire Roof Care
 
-# Run and deploy your AI Studio app
+React/Vite website, statically rendered at build time and hydrated for navigation and enquiries. Preferred production origin: https://www.hampshireroofcare.co.uk.
 
-This contains everything you need to run your app locally.
+- [SEO plan and monthly workflow](docs/seo/PLAN.md)
+- [Current status](docs/seo/STATUS.md)
+- [Google measurement setup](docs/seo/MEASUREMENT.md)
 
-View your app in AI Studio: https://ai.studio/apps/drive/15s00hrUPjuofAtHQIcLs1Ahd5gWZiAEd
+Use Node.js 22 or later. Install with `npm ci`. No Gemini key is required.
 
-## Run Locally
+```sh
+npm run dev       # development app
+npm run check     # typecheck, analytics tests, production build and SEO checks
+npm run preview   # production HTML at http://127.0.0.1:4173, including 404 responses
+```
 
-**Prerequisites:**  Node.js
+`scripts/build.mjs` renders routes from `entry-server.tsx` into `dist`, using the same components and metadata as browser navigation. The sitemap excludes noindex pages. Add new top-level routes to both `App.tsx` and `entry-server.tsx`. Services, areas and guide slugs come from `lib/content.ts`.
 
+Vercel must run `npm run build`, publish `dist`, and use the repository's clean URL configuration. Do not restore a catch-all rewrite to `index.html`: it defeats page-specific HTML and 404 responses. Verify direct URLs and missing-page status on a Vercel preview before releasing.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Both enquiry forms share the existing Formspree endpoint in `lib/enquiries.ts`. Mocked tests do not establish inbox delivery; confirm the recipient and delivery with the client. GA4 `G-DW33S98E2J` is live behind analytics consent. Search Console is verified and linked; the sitemap has been processed. See the measurement register for IDs, collection behaviour and reporting limits. Never commit API credentials or put them in browser code.

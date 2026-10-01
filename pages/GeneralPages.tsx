@@ -6,6 +6,8 @@ import ImagePlaceholder, { TeamMemberPlaceholder, GalleryPlaceholder } from '../
 import { StatsGrid } from '../components/StatCounter';
 import { AlertBox, TrustBadge } from '../components/ServiceFeature';
 import SEO, { FAQSchema, BreadcrumbSchema } from '../components/SEO';
+import { submitEnquiry } from '../lib/enquiries';
+import { trackEvent } from '../lib/analytics';
 
 // ============================================
 // CONTACT PAGE
@@ -14,7 +16,23 @@ interface ContactPageProps {
   setIsQuoteModalOpen: (open: boolean) => void;
 }
 
-export const ContactPage: React.FC<ContactPageProps> = ({ setIsQuoteModalOpen }) => (
+export const ContactPage: React.FC<ContactPageProps> = ({ setIsQuoteModalOpen }) => {
+  const [submission, setSubmission] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (submission === 'sending') return;
+    const form = event.currentTarget;
+    setSubmission('sending');
+    try {
+      await submitEnquiry(Object.fromEntries(new FormData(form).entries()));
+      trackEvent('generate_lead', 'contact');
+      form.reset();
+      setSubmission('success');
+    } catch {
+      setSubmission('error');
+    }
+  };
+  return (
   <div className="pt-28 pb-24 bg-warm-50 min-h-screen">
     <SEO 
       title="Contact Us - Book Your Free Survey"
@@ -68,20 +86,20 @@ export const ContactPage: React.FC<ContactPageProps> = ({ setIsQuoteModalOpen })
         </div>
       </motion.div>
 
-      <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
         {/* Contact Info */}
-        <div className="space-y-6">
+        <div className="space-y-6 min-w-0">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}
-            className="bg-white p-8 lg:p-10 rounded-3xl border border-warm-200 shadow-soft"
+            className="min-w-0 bg-white p-5 sm:p-8 lg:p-10 rounded-3xl border border-warm-200 shadow-soft"
           >
             <h2 className="font-heading text-2xl font-bold text-charcoal mb-6">Contact Options</h2>
             
-            <div className="space-y-6">
-              <a href="tel:07538284300" className="flex items-start gap-4 group p-4 rounded-2xl hover:bg-surface transition-colors">
-                <div className="p-3 bg-primary-50 rounded-xl text-primary-600 group-hover:bg-primary-600 group-hover:text-white transition-colors">
+            <div className="space-y-6 min-w-0">
+              <a href="tel:07538284300" className="flex items-start gap-3 group p-2 sm:p-4 rounded-2xl hover:bg-surface transition-colors">
+                <div className="shrink-0 p-3 bg-primary-50 rounded-xl text-primary-600 group-hover:bg-primary-600 group-hover:text-white transition-colors">
                   <Phone size={24} />
                 </div>
                 <div>
@@ -91,19 +109,19 @@ export const ContactPage: React.FC<ContactPageProps> = ({ setIsQuoteModalOpen })
                 </div>
               </a>
               
-              <a href="mailto:info.hampshireroofcare@gmail.com" className="flex items-start gap-4 group p-4 rounded-2xl hover:bg-surface transition-colors">
-                <div className="p-3 bg-primary-50 rounded-xl text-primary-600 group-hover:bg-primary-600 group-hover:text-white transition-colors">
+              <a href="mailto:info.hampshireroofcare@gmail.com" className="flex items-start gap-3 group p-2 sm:p-4 rounded-2xl hover:bg-surface transition-colors">
+                <div className="shrink-0 p-3 bg-primary-50 rounded-xl text-primary-600 group-hover:bg-primary-600 group-hover:text-white transition-colors">
                   <Mail size={24} />
                 </div>
                 <div>
                   <h3 className="font-heading font-bold text-charcoal">Email</h3>
                   <p className="text-slate-muted text-sm mb-1">For general enquiries</p>
-                  <span className="text-primary-600 font-medium">info.hampshireroofcare@gmail.com</span>
+                  <span className="text-primary-600 font-medium break-all">info.hampshireroofcare@gmail.com</span>
                 </div>
               </a>
               
-              <div className="flex items-start gap-4 p-4">
-                <div className="p-3 bg-primary-50 rounded-xl text-primary-600">
+              <div className="flex items-start gap-3 p-2 sm:p-4">
+                <div className="shrink-0 p-3 bg-primary-50 rounded-xl text-primary-600">
                   <MapPin size={24} />
                 </div>
                 <div>
@@ -119,7 +137,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ setIsQuoteModalOpen })
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
-            className="bg-charcoal p-8 rounded-3xl text-white relative overflow-hidden"
+            className="bg-charcoal p-5 sm:p-8 rounded-3xl text-white relative overflow-hidden"
           >
             <div className="absolute inset-0 bg-mesh-pattern opacity-5" />
             <div className="relative">
@@ -147,7 +165,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ setIsQuoteModalOpen })
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.3 }}
-          className="bg-white p-8 lg:p-10 rounded-3xl border border-warm-200 shadow-soft-lg"
+          className="min-w-0 bg-white p-5 sm:p-8 lg:p-10 rounded-3xl border border-warm-200 shadow-soft-lg"
         >
           <div className="flex items-center gap-3 mb-2">
             <div className="p-2 bg-primary-100 rounded-xl">
@@ -157,10 +175,10 @@ export const ContactPage: React.FC<ContactPageProps> = ({ setIsQuoteModalOpen })
           </div>
           <p className="text-slate-muted mb-8">Fill in the form and we'll get back to you promptly.</p>
           
-          <form className="space-y-5">
+          <form className="space-y-5" onSubmit={handleSubmit}>
             <div>
-              <label className="block text-sm font-medium text-charcoal mb-2">Full Name *</label>
-              <input 
+              <label htmlFor="contact-name" className="block text-sm font-medium text-charcoal mb-2">Full Name *</label>
+              <input id="contact-name" name="name"
                 type="text" 
                 className="w-full bg-surface border border-warm-200 rounded-xl px-4 py-4 text-charcoal focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all" 
                 required
@@ -169,16 +187,16 @@ export const ContactPage: React.FC<ContactPageProps> = ({ setIsQuoteModalOpen })
             
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-charcoal mb-2">Postcode *</label>
-                <input 
+                <label htmlFor="contact-postcode" className="block text-sm font-medium text-charcoal mb-2">Postcode *</label>
+                <input id="contact-postcode" name="postcode"
                   type="text" 
                   className="w-full bg-surface border border-warm-200 rounded-xl px-4 py-4 text-charcoal focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all" 
                   required
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-charcoal mb-2">Phone *</label>
-                <input 
+                <label htmlFor="contact-phone" className="block text-sm font-medium text-charcoal mb-2">Phone *</label>
+                <input id="contact-phone" name="phone"
                   type="tel" 
                   className="w-full bg-surface border border-warm-200 rounded-xl px-4 py-4 text-charcoal focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all" 
                   required
@@ -187,8 +205,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ setIsQuoteModalOpen })
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-charcoal mb-2">Email *</label>
-              <input 
+              <label htmlFor="contact-email" className="block text-sm font-medium text-charcoal mb-2">Email *</label>
+              <input id="contact-email" name="email"
                 type="email" 
                 className="w-full bg-surface border border-warm-200 rounded-xl px-4 py-4 text-charcoal focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all" 
                 required
@@ -196,8 +214,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ setIsQuoteModalOpen })
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-charcoal mb-2">What help do you need? *</label>
-              <select className="w-full bg-surface border border-warm-200 rounded-xl px-4 py-4 text-charcoal focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all appearance-none cursor-pointer">
+              <label htmlFor="contact-service" className="block text-sm font-medium text-charcoal mb-2">What help do you need? *</label>
+              <select id="contact-service" name="service" required className="w-full bg-surface border border-warm-200 rounded-xl px-4 py-4 text-charcoal focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all appearance-none cursor-pointer">
                 <option value="">Select a service...</option>
                 <option value="roof-repairs">Roof Repairs</option>
                 <option value="pitched-roof-replacement">Pitched Roof Replacement</option>
@@ -209,8 +227,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ setIsQuoteModalOpen })
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-charcoal mb-2">Tell us what you've noticed *</label>
-              <textarea 
+              <label htmlFor="contact-message" className="block text-sm font-medium text-charcoal mb-2">Tell us what you've noticed *</label>
+              <textarea id="contact-message" name="message"
                 rows={4} 
                 className="w-full bg-surface border border-warm-200 rounded-xl px-4 py-4 text-charcoal focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all resize-none"
                 placeholder="Where is the problem? When did you notice it? Any signs indoors?"
@@ -218,20 +236,16 @@ export const ContactPage: React.FC<ContactPageProps> = ({ setIsQuoteModalOpen })
               ></textarea>
             </div>
             
-            <div>
-              <label className="block text-sm font-medium text-charcoal mb-2">Upload Photos (optional)</label>
-              <div className="border-2 border-dashed border-warm-300 rounded-xl p-6 text-center hover:border-primary-300 transition-colors cursor-pointer bg-surface">
-                <Upload className="mx-auto text-slate-light mb-2" size={32} />
-                <p className="text-sm text-slate-muted">Click to upload or drag and drop</p>
-                <p className="text-xs text-slate-light mt-1">Photos from ground level help us prepare</p>
-              </div>
-            </div>
-            
+            <p className="text-sm text-slate-muted">If photos would help, we’ll explain how to send them when we reply. Please take photos from ground level.</p>
+            <p role="status" aria-live="polite">
+              {submission === 'success' && 'Thank you. Your survey request has been sent.'}
+              {submission === 'error' && 'Your request could not be sent. Please try again or call 07538 284300.'}
+            </p>
             <button 
-              type="submit" 
+              type="submit" disabled={submission === 'sending'}
               className="w-full bg-primary-600 hover:bg-primary-700 text-white font-heading font-semibold py-4 rounded-xl transition-all flex items-center justify-center gap-2 group shadow-soft hover:shadow-glow-primary"
             >
-              Submit Survey Request
+              {submission === 'sending' ? 'Sending…' : 'Submit Survey Request'}
               <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
             </button>
 
@@ -244,6 +258,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ setIsQuoteModalOpen })
     </div>
   </div>
 );
+};
 
 // ============================================
 // ABOUT PAGE
@@ -885,12 +900,17 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ setIsQuoteModalOpen })
             <li>Name and contact information including email address and phone number</li>
             <li>Property address and postcode</li>
             <li>Information about your roofing enquiry</li>
-            <li>Photographs you choose to upload</li>
+            <li>Photographs you choose to send separately when discussing your enquiry</li>
           </ul>
           <h2>What we do with the information</h2>
           <p>
             We use this information solely to respond to your enquiry and to provide you with our roofing services. We do not share your information with third parties for marketing purposes.
           </p>
+          <h2>Website enquiries and service providers</h2>
+          <p>Our website forms use Formspree to process and deliver your enquiry. Your contact details and message are sent to that service so we can respond. Website hosting and email providers also process information needed to operate the site and handle enquiries.</p>
+          <h2>Optional website analytics</h2>
+          <p>If you accept analytics, Google Analytics helps us understand visits, pages viewed and actions such as accepted enquiry forms and contact-link clicks. It uses cookies and processes technical information about your browser and visit. Our analytics events do not include your form answers, name, email address, phone number or postcode. We do not enable advertising personalisation in this integration.</p>
+          <p>You can reject analytics or withdraw your choice using Cookie settings in the footer. See our <Link to="/cookie-policy">cookie policy</Link> for details, including other third-party services used on this site.</p>
           <h2>Your rights</h2>
           <p>
             You have the right to request a copy of the information we hold about you, and to have any inaccuracies corrected. You can also request that we delete your data.

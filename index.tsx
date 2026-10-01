@@ -1,15 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { createRoot, hydrateRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 
-const rootElement = document.getElementById('root');
-if (!rootElement) {
-  throw new Error("Could not find root element to mount to");
-}
-
-const root = ReactDOM.createRoot(rootElement);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const root = document.getElementById('root');
+if (!root) throw new Error('Missing root element');
+const app = <React.StrictMode><BrowserRouter><App /></BrowserRouter></React.StrictMode>;
+if (root.querySelector('main')) hydrateRoot(root, app);
+else createRoot(root).render(app);

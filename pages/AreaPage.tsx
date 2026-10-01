@@ -1,3 +1,4 @@
+import NotFound from './NotFound';
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { areas, services } from '../lib/content';
@@ -164,24 +165,11 @@ const AreaPage: React.FC<AreaPageProps> = ({ setIsQuoteModalOpen }) => {
   // Individual Area Page
   const area = areas.find(a => a.slug === slug);
 
-  if (!area) {
-    return (
-      <div className="pt-32 px-6 text-center min-h-screen bg-warm-50">
-        <h1 className="font-heading text-2xl font-bold text-charcoal mb-4">Area not found</h1>
-        <Link to="/areas" className="text-primary-600 hover:underline">Back to areas</Link>
-      </div>
-    );
-  }
+  if (!area) return <NotFound />;
 
   const areaName = area.title.replace('Roofer in ', '');
   const otherAreas = areas.filter(a => a.slug !== slug);
 
-  // Area-specific testimonial (simulated)
-  const localTestimonial = {
-    text: `Exceptional work on our roof. Honest advice, fair pricing, and quality workmanship. Would highly recommend to anyone in ${areaName}.`,
-    author: 'Local Customer',
-    rating: 5
-  };
 
   return (
     <div className="min-h-screen bg-warm-50 overflow-x-hidden">
@@ -322,26 +310,7 @@ const AreaPage: React.FC<AreaPageProps> = ({ setIsQuoteModalOpen }) => {
               </div>
             </motion.div>
 
-            {/* Local Testimonial */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="bg-charcoal rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 relative overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-mesh-pattern opacity-5" />
-              <div className="relative">
-                <div className="flex gap-1 mb-6">
-                  {[...Array(localTestimonial.rating)].map((_, i) => (
-                    <Star key={i} size={20} className="text-copper" fill="currentColor" />
-                  ))}
-                </div>
-                <p className="text-white/90 text-base sm:text-xl leading-relaxed mb-6 break-words">
-                  "{localTestimonial.text}"
-                </p>
-                <p className="text-white/50 font-medium text-sm sm:text-base break-words">— {localTestimonial.author}, {areaName}</p>
-              </div>
-            </motion.div>
+
           </div>
           
           {/* Sidebar */}
