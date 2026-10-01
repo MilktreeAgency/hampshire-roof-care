@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Phone, Star } from 'lucide-react';
+import { ArrowRight, Phone } from 'lucide-react';
 
 interface HeroProps {
   setIsQuoteModalOpen: (open: boolean) => void;
@@ -59,12 +59,12 @@ const Hero: React.FC<HeroProps> = ({ setIsQuoteModalOpen }) => {
             </div>
             
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white tracking-tight leading-[1.1] px-2 sm:px-0">
-              Honest roofing help that keeps your home{' '}
-              <span className="text-primary-300 font-extrabold">safe and dry</span>
+              Roof repairs & replacements{' '}
+              <span className="text-primary-300 font-extrabold">in Hampshire</span>
             </h1>
             
             <p className="text-base md:text-lg lg:text-xl text-white/80 max-w-xl mx-auto lg:mx-0 leading-relaxed px-2 sm:px-0">
-              If your roof is leaking, or starting to look old and tired, you need clear honest advice and multiple solutions going forward.
+              Roof repairs, pitched and flat roof replacements, leadwork and pointing. We survey your roof in person and explain the options before quoting.
             </p>
 
             {/* CTA Buttons */}
@@ -86,19 +86,9 @@ const Hero: React.FC<HeroProps> = ({ setIsQuoteModalOpen }) => {
               </a>
             </div>
 
-            {/* Trust Signal - 5 Star Reviews */}
-            <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 pt-2 justify-center lg:justify-start">
-              <div className="flex items-center gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={18} className="fill-yellow-400 text-yellow-400" />
-                ))}
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-white font-bold text-sm md:text-base">100+ 5-Star Reviews</span>
-                <span className="text-white/50">•</span>
-                <span className="text-white/70 text-sm">Trusted by Hampshire homeowners</span>
-              </div>
-            </div>
+            <p className="text-white/90 font-semibold text-sm md:text-base pt-2">
+              Free site surveys · Written quotes · Clear repair options
+            </p>
 
             {/* Areas Served */}
             <p className="text-white/60 text-xs md:text-sm px-2 sm:px-0">

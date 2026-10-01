@@ -19,7 +19,7 @@ Verified 1 October 2026 using the user's existing signed-in Chrome tabs. The use
 | Primary key event | `generate_lead`, once per event, no default monetary value |
 | Reporting API identity | Not configured; browser reports available via signed-in Chrome |
 | Vercel | `milktree-agencys-projects/hampshire-roof-care`; production deployed |
-| Business Profile | URL/access/details still need verification |
+| Business Profile | User confirms setup complete; Google verification pending. See the existing Business Profile setup record. |
 | Formspree | Existing endpoint reused; recipient and inbox delivery unconfirmed |
 | DNS provider | User has full access; provider not recorded; no DNS changes made here |
 

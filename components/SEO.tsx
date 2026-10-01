@@ -27,7 +27,8 @@ const SEO: React.FC<SEOProps> = ({ title, description = DEFAULT_DESCRIPTION, can
   ogImage = '/og-image.jpg', ogType = 'website', article, noindex = false }) => {
   const { pathname } = useLocation();
   const collect = useContext(SEOContext);
-  const fullTitle = title ? `${title} | ${SITE_NAME}` : DEFAULT_TITLE;
+  const pageTitle = title?.replace(/\s*\|\s*Hampshire Roof Care(?: Company)?$/i, '').trim();
+  const fullTitle = pageTitle ? `${pageTitle} | ${SITE_NAME}` : DEFAULT_TITLE;
   const url = new URL(canonical || pathname, BASE_URL).href;
   const image = new URL(ogImage, BASE_URL).href;
   const head: HeadData = {

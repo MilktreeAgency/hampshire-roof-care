@@ -104,7 +104,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ setIsQuoteModalOpen })
                 </div>
                 <div>
                   <h3 className="font-heading font-bold text-charcoal">Call Us</h3>
-                  <p className="text-slate-muted text-sm mb-1">Mon-Fri, 8am - 6pm</p>
+                  <p className="text-slate-muted text-sm mb-1">Mon–Fri, 8am–6pm. Weekend visits by appointment.</p>
                   <span className="text-xl font-heading font-bold text-primary-600">07538 284300</span>
                 </div>
               </a>
@@ -268,13 +268,6 @@ interface AboutPageProps {
 }
 
 export const AboutPage: React.FC<AboutPageProps> = ({ setIsQuoteModalOpen }) => {
-  const stats = [
-    { end: 500, suffix: '+', label: 'Roofs Protected' },
-    { end: 15, suffix: '+', label: 'Years Experience' },
-    { end: 100, suffix: '%', label: 'Satisfaction Rate' },
-    { end: 5, suffix: '★', label: 'Average Rating' },
-  ];
-
   const values = [
     {
       icon: Shield,
@@ -368,12 +361,16 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setIsQuoteModalOpen }) => 
         </div>
       </div>
 
-      {/* Stats */}
-      <div className="py-16 bg-white">
-        <div className="max-w-5xl mx-auto px-6">
-          <StatsGrid stats={stats} columns={4} />
+      <section className="py-12 bg-white" aria-label="How we work">
+        <div className="max-w-5xl mx-auto px-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[
+            ['Survey first', 'Recommendations based on a visit to your property.'],
+            ['Clear options', 'An explanation of the proposed repair or replacement.'],
+            ['Written quotes', 'A description of the work before you decide.'],
+            ['Local coverage', "Southampton, Winchester, the New Forest and Chandler's Ford."],
+          ].map(([title, text]) => <div key={title} className="border-l-2 border-primary-200 pl-4"><h2 className="font-heading font-bold text-charcoal text-lg mb-2">{title}</h2><p className="text-slate-body text-sm leading-relaxed">{text}</p></div>)}
         </div>
-      </div>
+      </section>
 
       {/* Our Story */}
       <section className="py-20 lg:py-28 bg-warm-50">
@@ -444,7 +441,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setIsQuoteModalOpen }) => 
                 <Users size={40} className="text-primary-600" strokeWidth={1.5} />
               </div>
               <h3 className="font-heading font-bold text-charcoal mb-2">Local Experts</h3>
-              <p className="text-slate-body text-sm">Serving Hampshire for 15+ years</p>
+              <p className="text-slate-body text-sm">Serving homeowners across Hampshire</p>
             </div>
           </div>
         </div>
@@ -793,6 +790,8 @@ export const FAQPage: React.FC<FAQPageProps> = ({ setIsQuoteModalOpen }) => {
                     >
                       <button
                         onClick={() => setOpenIndex(openIndex === currentGlobalIndex ? null : currentGlobalIndex)}
+                        aria-expanded={openIndex === currentGlobalIndex}
+                        aria-controls={`faq-answer-${currentGlobalIndex}`}
                         className="w-full flex items-center justify-between p-6 text-left hover:bg-surface transition-colors"
                       >
                         <h3 className="font-heading text-lg font-semibold text-charcoal pr-4">{faq.q}</h3>
@@ -807,22 +806,10 @@ export const FAQPage: React.FC<FAQPageProps> = ({ setIsQuoteModalOpen }) => {
                           />
                         </div>
                       </button>
-                      <AnimatePresence>
-                        {openIndex === currentGlobalIndex && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: 'auto', opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="overflow-hidden"
-                          >
-                            <div className="px-6 pb-6">
-                              <div className="h-px bg-warm-200 mb-4" />
-                              <p className="text-slate-body leading-relaxed">{faq.a}</p>
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
+                      <div id={`faq-answer-${currentGlobalIndex}`} hidden={openIndex !== currentGlobalIndex} className="px-6 pb-6">
+                        <div className="h-px bg-warm-200 mb-4" />
+                        <p className="text-slate-body leading-relaxed">{faq.a}</p>
+                      </div>
                     </div>
                   );
                 })}

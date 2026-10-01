@@ -13,6 +13,10 @@ for (const route of [...routes, '/404']) {
     const title = html.match(/<title>(.*?)<\/title>/)?.[1];
     const description = html.match(/name="description" content="([^"]+)"/)?.[1];
     assert(title && description, 'Missing title or description');
+    assert.equal((title.match(/Hampshire Roof Care/g) || []).length, 1, 'Repeated site name in title');
+    if (/^\/(services|areas|guides)\/.+/.test(route)) {
+      assert(/<h2[\s>]/.test(html), 'Editorial page lacks second-level sections');
+    }
     assert.equal((html.match(/<h1[\s>]/g) || []).length, 1, 'Expected one rendered H1');
     assert.equal((html.match(/rel="canonical"/g) || []).length, 1, 'Expected one canonical');
     assert(!html.includes('<!--app-html-->'), 'Empty application shell');

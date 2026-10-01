@@ -48,7 +48,7 @@ The desktop app/computer must be running for local work, and required network/ac
 2. Verify remaining business/review claims, years, project counts, warranties, insurance and location-specific photos. Do not invent supporting evidence.
 3. Review priority-page indexing after Google processes the new property. Collect the first complete reporting period; current reports are still processing.
 4. Measure mobile performance, optimise the measured bottleneck and review remaining moderate router advisories.
-5. Verify the existing Google Business Profile and improve one existing commercial page using real project evidence.
+5. Google Business Profile setup is complete per the user; verification is pending. Check public details/photos when Google approves it. Add a commercial-page case study once actual job evidence is supplied.
 6. Complete the legal-notice review, especially the terms route still reusing privacy content. The analytics choice does not control existing Google Fonts, Vimeo or Formspree; no whole-site compliance sign-off is claimed.
 7. Change the existing non-www 307 redirect to a permanent redirect in Vercel after checking domain configuration.
 8. If always-on/API reporting is required, configure an approved reporting identity and collector. The current automation depends on this computer, app and signed-in browser.
@@ -58,3 +58,22 @@ The desktop app/computer must be running for local work, and required network/ac
 Run `npm run check`; deploy a Vercel preview; inspect commercial/utility/missing URLs and mobile interactions; confirm relevant forms and factual copy. Record deployment and post-release checks. Preserve the prior Vercel deployment for rollback. Do not treat index eligibility as an indexing or ranking guarantee.
 
 Google live inspection (1 October, 11:55 UK): roof repairs is available to Google and can be indexed, with one valid breadcrumb item. Indexing was requested and Google confirmed addition to its priority crawl queue. This does not establish that indexing is complete.
+
+## September catch-up: on-page batch completed 1 October
+
+- Corrected duplicate brand suffixes on all six guide titles; added a regression check.
+- Homepage and service headings state the service and Hampshire coverage clearly.
+- Corrected body heading levels across five services, four areas and six guides.
+- Added two survey questions per service and relevant service-to-guide/coverage links.
+- All four area pages link service mentions to the appropriate service page.
+- Guides show topic-relevant service links on desktop and mobile; article content comes before the sidebar on mobile.
+- FAQ answers remain in the generated HTML, with accessible expanded-state controls.
+- Reused gallery photos no longer claim to show work in every town or every service type; photo subjects have descriptive alt text and galleries load lazily.
+- Removed the unsubstantiated homepage 100+ five-star review count and About-page project/experience/satisfaction/rating totals; replaced with service-process information. Existing individual testimonials, rating badges, insurance and guarantee claims still need owner evidence.
+- Contact page includes the weekend-appointment detail recorded during Business Profile setup. Public email unchanged pending confirmation.
+
+Checks: `npm run check` passed for 26 pages plus 404 and 23 sitemap URLs. Chrome at 390px: service guidance readable; FAQ expand/collapse passed; guide related-service section visible; no horizontal guide overflow. No real form submission was sent. This is September-scope catch-up work performed on 1 October; no dates or results have been backdated.
+
+Sources used for the on-page approach: [Google title guidance](https://developers.google.com/search/docs/appearance/title-link) and [internal link guidance](https://developers.google.com/search/docs/crawling-indexing/links-crawlable). No ranking uplift is claimed from this implementation.
+
+On-page release: [Vercel deployment dpl_84ufH8SxiTtyQhDHp6dywnaHGrWh](https://vercel.com/milktree-agencys-projects/hampshire-roof-care/84ufH8SxiTtyQhDHp6dywnaHGrWh), aliased to www.hampshireroofcare.co.uk. Production guide HTML confirms the corrected title, H2 section and relevant service link.

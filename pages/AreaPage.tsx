@@ -1,3 +1,4 @@
+import { roofingGallery } from '../lib/page-guidance';
 import NotFound from './NotFound';
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
@@ -242,7 +243,7 @@ const AreaPage: React.FC<AreaPageProps> = ({ setIsQuoteModalOpen }) => {
               >
                 <img
                   src={area.image}
-                  alt={`Professional roofing work completed in ${areaName} by Hampshire Roof Care`}
+                  alt="Roofing work from the Hampshire Roof Care gallery"
                   className="w-full max-w-full aspect-[16/9] object-cover rounded-2xl sm:rounded-3xl"
                 />
               </motion.div>
@@ -294,16 +295,18 @@ const AreaPage: React.FC<AreaPageProps> = ({ setIsQuoteModalOpen }) => {
                   <Building className="text-primary-600" size={24} />
                 </div>
                 <div className="min-w-0">
-                  <h3 className="font-heading text-xl sm:text-2xl font-bold text-charcoal">Local Projects</h3>
-                  <p className="text-slate-muted text-sm sm:text-base truncate">Work completed in {areaName}</p>
+                  <h3 className="font-heading text-xl sm:text-2xl font-bold text-charcoal">Roofing Gallery</h3>
+                  <p className="text-slate-muted text-sm sm:text-base truncate">Examples from our roofing work</p>
                 </div>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-                {[1, 2, 3, 4].map((num) => (
+                {roofingGallery.map((photo) => (
                   <img
-                    key={num}
-                    src={`/ourwork-${num}.jpg`}
-                    alt={`Completed roofing project in ${areaName} - example ${num}`}
+                    key={photo.src}
+                    src={photo.src}
+                    alt={photo.alt}
+                    loading="lazy"
+                    decoding="async"
                     className="aspect-square w-full object-cover rounded-lg sm:rounded-xl"
                   />
                 ))}
