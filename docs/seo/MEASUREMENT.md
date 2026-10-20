@@ -17,10 +17,10 @@ Verified 1 October 2026 using the user's existing signed-in Chrome tabs. The use
 | Search Console–GA4 link | Created and verified for the domain and web stream |
 | Enhanced measurement | Disabled to avoid overlap with explicit app events |
 | Primary key event | `generate_lead`, once per event, no default monetary value |
-| Reporting API identity | Not configured; browser reports available via signed-in Chrome |
+| Reporting API identity | No working unattended collector; treg team connection unavailable on 15 October. Signed-in Chrome reports work. |
 | Vercel | `milktree-agencys-projects/hampshire-roof-care`; production deployed |
-| Business Profile | User confirms setup complete; Google verification pending. See the existing Business Profile setup record. |
-| Formspree | Existing endpoint reused; recipient and inbox delivery unconfirmed |
+| Business Profile | Verified in Business Profile Manager on 15 October 2026; official review link and QR prepared. See the dated review assets. |
+| Formspree | Two September submissions independently seen in Formspree, on 13 and 26 September; inbox delivery confirmed by user. Notification recipient remains unrecorded. |
 | DNS provider | User has full access; provider not recorded; no DNS changes made here |
 
 Ownership should be reviewed with the client so the client retains suitable access. No ownership or permission changes were made in this task.
@@ -39,7 +39,7 @@ Manual page views cover initial loads, client navigation and back/forward with a
 | `click_email` | Email link click | Intent, not an email sent |
 | `quote_start` | Quote modal deliberately opened | Funnel diagnostic, not a lead |
 
-Live validation: zero Google tags before acceptance, one after acceptance, zero after withdrawal/reload. GA4 Realtime showed one test visitor and one `page_view` with the correct roof-repairs title. Automated isolated tests cover event payloads, consent expiry, unavailable storage, back navigation, deduplication and SDK failure. Mocked form tests cover failure/retry/success; no real lead was submitted, so live `generate_lead` and inbox delivery remain to be verified.
+Live validation: zero Google tags before acceptance, one after acceptance, zero after withdrawal/reload. GA4 Realtime showed one test visitor and one `page_view` with the correct roof-repairs title. Automated isolated tests cover event payloads, consent expiry, unavailable storage, back navigation, deduplication and SDK failure. Mocked form tests cover failure/retry/success; no real lead was submitted by this task, so live `generate_lead` remains to be verified. On 1 October the user confirmed that two September website enquiries reached the inbox through Formspree. Subsequent inspection of Formspree confirmed the two submission dates (13 and 26 September), but not organic attribution, GA4 collection or qualified leads. The user corrected the original October wording to September. Personal customer data is omitted from reports.
 
 The separate cookie page and updated privacy copy describe analytics plus existing providers. Existing Google Fonts, Vimeo and Formspree are not controlled by the analytics choice. Terms/privacy content and all providers still need a full legal/privacy review; this is not a compliance certification.
 
@@ -67,3 +67,11 @@ References: [Search Analytics API](https://developers.google.com/webmaster-tools
 
 
 Google live inspection (1 October, 11:55 UK): roof repairs is available to Google and can be indexed, with one valid breadcrumb item. Indexing was requested and Google confirmed addition to its priority crawl queue. This does not establish that indexing is complete.
+
+## Reporting checkpoint — 15 October 2026
+
+Authenticated browser reads succeeded for GSC, GA4 and Business Profile. Equal complete windows were 7–11 October versus 2–6 October. See [aggregate evidence](reports/2026-10-15-evidence.json) and [review brief](reports/2026-10-15-mid-month-review.md) for scope, freshness, metrics and caveats. No reporting settings or permissions changed.
+
+GA4 recorded zero key events in both windows; live accepted-form `generate_lead` remains unverified. One organic email-link click and one organic telephone-link click appeared in the earlier window only. These are neither accepted enquiries nor qualified leads. October Formspree submissions and client outcomes were not checked in this run and remain unknown. September's two confirmed submissions are kept separate.
+
+Business Profile is now verified. Official review URL: https://g.page/r/CdUkZX3eXwjuEBM/review. It opened the correct business review form; no review was posted. PNG QR independently decoded to that URL. The treg connection failed because its team was no longer available; no credentials or new access were created. Browser access is working but does not establish unattended API access.

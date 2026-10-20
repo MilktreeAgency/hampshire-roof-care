@@ -1,0 +1,22 @@
+{
+  "observed_date": "2026-10-01",
+  "source_url": "https://formspree.io/forms/xgoovnnw/submissions",
+  "form_name": "Hampshire Roofcare Quote Form",
+  "reporting_period": "2026-09",
+  "submission_count": 2,
+  "submissions": [
+    {
+      "date": "2026-09-13",
+      "category": "slipped-tile repair enquiry"
+    },
+    {
+      "date": "2026-09-26",
+      "category": "reroofing quote enquiry"
+    }
+  ],
+  "verification": "Submission records seen in signed-in Formspree UI; inbox delivery confirmed by user.",
+  "seo_attribution": "Unknown; no attribution to SEO work.",
+  "business_outcomes": "Not yet recorded",
+  "correction": "User clarified September, replacing earlier October wording.",
+  "privacy": "Only aggregate count, dates and broad service categories retained; no customer personal data copied."
+}

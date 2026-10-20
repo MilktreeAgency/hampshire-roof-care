@@ -18,7 +18,7 @@ export default function CookiePolicy() {
       <h2>Other services</h2>
       <p>The site uses Google Fonts, Vimeo for the homepage video, and Formspree to handle enquiry submissions. These services receive connection information when their resources are requested or you submit a form. The analytics choice controls Google Analytics; it does not control these other services. You can also manage cookies through your browser settings.</p>
       <h2>Contact</h2>
-      <p>For questions about website data, email <a href="mailto:info.hampshireroofcare@gmail.com">info.hampshireroofcare@gmail.com</a>.</p>
+      <p>For questions about website data, email <a href="mailto:asa@hampshireroofcare.co.uk">asa@hampshireroofcare.co.uk</a>.</p>
     </div>
     <button onClick={openCookieSettings} className="mt-8 rounded-xl bg-primary-600 text-white px-6 py-3 font-semibold">Change cookie settings</button>
   </div></div>;

@@ -97,11 +97,11 @@ const Footer: React.FC<FooterProps> = ({ setIsQuoteModalOpen }) => {
                 </div>
                 <span>07538 284300</span>
               </a>
-              <a href="mailto:info.hampshireroofcare@gmail.com" className="flex items-center gap-3 text-white/60 hover:text-primary-400 transition-colors group">
+              <a href="mailto:asa@hampshireroofcare.co.uk" className="flex items-center gap-3 text-white/60 hover:text-primary-400 transition-colors group">
                 <div className="p-2 bg-white/5 rounded-lg group-hover:bg-primary-600/20 transition-colors">
                   <Mail size={16} />
                 </div>
-                <span className="text-sm">info.hampshireroofcare@gmail.com</span>
+                <span className="text-sm">asa@hampshireroofcare.co.uk</span>
               </a>
               <div className="flex items-center gap-3 text-white/60">
                 <div className="p-2 bg-white/5 rounded-lg">

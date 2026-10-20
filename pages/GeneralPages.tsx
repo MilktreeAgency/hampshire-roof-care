@@ -109,14 +109,14 @@ export const ContactPage: React.FC<ContactPageProps> = ({ setIsQuoteModalOpen })
                 </div>
               </a>
               
-              <a href="mailto:info.hampshireroofcare@gmail.com" className="flex items-start gap-3 group p-2 sm:p-4 rounded-2xl hover:bg-surface transition-colors">
+              <a href="mailto:asa@hampshireroofcare.co.uk" className="flex items-start gap-3 group p-2 sm:p-4 rounded-2xl hover:bg-surface transition-colors">
                 <div className="shrink-0 p-3 bg-primary-50 rounded-xl text-primary-600 group-hover:bg-primary-600 group-hover:text-white transition-colors">
                   <Mail size={24} />
                 </div>
                 <div>
                   <h3 className="font-heading font-bold text-charcoal">Email</h3>
                   <p className="text-slate-muted text-sm mb-1">For general enquiries</p>
-                  <span className="text-primary-600 font-medium break-all">info.hampshireroofcare@gmail.com</span>
+                  <span className="text-primary-600 font-medium break-all">asa@hampshireroofcare.co.uk</span>
                 </div>
               </a>
               
@@ -904,7 +904,7 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ setIsQuoteModalOpen })
           </p>
           <h2>Contact</h2>
           <p>
-            If you have any questions about this privacy policy, please contact us at info.hampshireroofcare@gmail.com
+            If you have any questions about this privacy policy, please contact us at asa@hampshireroofcare.co.uk
           </p>
         </div>
       </motion.div>

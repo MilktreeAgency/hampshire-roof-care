@@ -5,4 +5,6 @@ dist-ssr
 .env
 .env.*
 docs
+output
+tmp
 *.log

@@ -1,0 +1,280 @@
+{
+  "data": {
+    "branding": {
+      "colorScheme": "dark",
+      "fonts": [
+        {
+          "family": "Satoshi",
+          "role": "body"
+        },
+        {
+          "family": "Instrument Sans",
+          "role": "heading"
+        }
+      ],
+      "colors": {
+        "primary": "#141200",
+        "accent": "#FFEE02",
+        "background": "#000000",
+        "textPrimary": "#000000",
+        "link": "#FFEE02"
+      },
+      "typography": {
+        "fontFamilies": {
+          "primary": "Satoshi",
+          "heading": "Instrument Sans"
+        },
+        "fontStacks": {
+          "heading": [
+            "Instrument Sans",
+            "system-ui",
+            "Segoe UI",
+            "Helvetica Neue",
+            "Arial",
+            "sans-serif"
+          ],
+          "body": [
+            "Satoshi",
+            "system-ui",
+            "Segoe UI",
+            "Helvetica Neue",
+            "Arial",
+            "sans-serif"
+          ],
+          "paragraph": [
+            "Satoshi",
+            "system-ui",
+            "Segoe UI",
+            "Helvetica Neue",
+            "Arial",
+            "sans-serif"
+          ]
+        },
+        "fontSizes": {
+          "h1": "80px",
+          "h2": "60px",
+          "body": "14px"
+        }
+      },
+      "spacing": {
+        "baseUnit": 4,
+        "borderRadius": "0px"
+      },
+      "components": {
+        "buttonPrimary": {
+          "background": "#FFEE02",
+          "textColor": "#000000",
+          "borderRadius": "33554400px",
+          "borderRadiusCorners": {
+            "topLeft": "33554400px",
+            "topRight": "33554400px",
+            "bottomRight": "33554400px",
+            "bottomLeft": "33554400px"
+          },
+          "shadow": "none"
+        },
+        "buttonSecondary": {
+          "background": "#0A0A0A",
+          "textColor": "#FFFFFF",
+          "borderRadius": "9999px",
+          "borderRadiusCorners": {
+            "topLeft": "9999px",
+            "topRight": "9999px",
+            "bottomRight": "9999px",
+            "bottomLeft": "9999px"
+          },
+          "shadow": "rgba(255, 255, 255, 0.18) 0px 1px 10px 0px inset"
+        }
+      },
+      "images": {
+        "logo": "https://www.milktreeagency.com/logos/logo.svg",
+        "favicon": "https://www.milktreeagency.com/favicon.ico?favicon.2vob68tjqpejf.ico?dpl=dpl_8Z1iZ2qGnd57csn4gkXV4Qexhm92",
+        "ogImage": "https://www.milktreeagency.com/opengraph-image?07defb067b2c481a",
+        "logoHref": "#top",
+        "logoAlt": "Milktree"
+      },
+      "__llm_logo_reasoning": {
+        "selectedIndex": 0,
+        "reasoning": "Selected #0 because it is visible, located in the header, and matches the brand name 'Milktree'. It is the most prominent logo fitting the brand identity.",
+        "confidence": 0.9,
+        "source": "llm"
+      },
+      "__llm_button_reasoning": {
+        "primary": {
+          "index": 2,
+          "text": "Get started",
+          "reasoning": "Button #2 has a vibrant background color (#FFEE02) which is the accent color, making it stand out as the primary CTA. The text 'Get started' is action-oriented, reinforcing its role as the primary button."
+        },
+        "secondary": {
+          "index": 0,
+          "text": "See plans",
+          "reasoning": "Button #4 has a different background color (#0A0A0A) and serves as a secondary action with the text 'See plans', which is less prominent than 'Get started'."
+        },
+        "confidence": 0.95
+      },
+      "personality": {
+        "tone": "modern",
+        "energy": "medium",
+        "targetAudience": "businesses seeking design services"
+      },
+      "designSystem": {
+        "framework": "tailwind",
+        "componentLibrary": ""
+      },
+      "confidence": {
+        "buttons": 0.95,
+        "colors": 0.9,
+        "overall": 0.925
+      },
+      "__llm_metadata": {
+        "logoSelection": {
+          "llmCalled": true,
+          "llmSucceeded": true,
+          "finalSource": "llm",
+          "rawLogoSelection": {
+            "selectedLogoIndex": 0,
+            "selectedLogoReasoning": "Selected #0 because it is visible, located in the header, and matches the brand name 'Milktree'. It is the most prominent logo fitting the brand identity.",
+            "confidence": 0.9
+          }
+        },
+        "buttonClassification": {
+          "llmCalled": true,
+          "llmSucceeded": true
+        }
+      }
+    },
+    "metadata": {
+      "googlebot": "noindex,indexifembedded",
+      "ogUrl": "https://www.milktreeagency.com",
+      "description": "Milktree is a UK design subscription: your embedded brand & design team. Unlimited design requests, senior work back in 48 hours, one flat monthly fee. 200+ brands built over 6 years as an agency.",
+      "next-size-adjust": "",
+      "twitter:image:alt": "Milktree — Your creative department. On demand.",
+      "og:site_name": "Milktree",
+      "og:type": "website",
+      "twitter:image:type": "image/png",
+      "og:url": "https://www.milktreeagency.com",
+      "ogImage": "https://www.milktreeagency.com/opengraph-image?07defb067b2c481a",
+      "theme-color": "#000000",
+      "ogDescription": "A UK design subscription: unlimited requests, senior work in 48 hours, one flat monthly fee.",
+      "og:title": "Milktree | Your creative department. On demand.",
+      "keywords": "design subscription,design subscription UK,unlimited design service,design agency subscription,productised design service,brand design retainer,embedded design team,flat-fee design agency,brand design,brand identity,creative department",
+      "ogSiteName": "Milktree",
+      "language": "en",
+      "viewport": [
+        "width=device-width, initial-scale=1",
+        "width=device-width,initial-scale=1,user-scalable=yes"
+      ],
+      "ogLocale": "en_GB",
+      "og:description": "A UK design subscription: unlimited requests, senior work in 48 hours, one flat monthly fee.",
+      "twitter:description": "A UK design subscription: unlimited requests, senior work in 48 hours, one flat monthly fee.",
+      "twitter:image": "https://www.milktreeagency.com/opengraph-image?07defb067b2c481a",
+      "og:image:height": "630",
+      "title": "Milktree | Design Subscription UK | Your Creative Department, On Demand",
+      "og:image": "https://www.milktreeagency.com/opengraph-image?07defb067b2c481a",
+      "og:image:alt": "Milktree — Your creative department. On demand.",
+      "twitter:image:width": "1200",
+      "twitter:image:height": "630",
+      "og:locale": "en_GB",
+      "color-scheme": "dark",
+      "og:image:type": "image/png",
+      "og:image:width": "1200",
+      "twitter:card": "summary_large_image",
+      "twitter:title": "Milktree | Your creative department. On demand.",
+      "ogTitle": "Milktree | Your creative department. On demand.",
+      "favicon": "https://www.milktreeagency.com/favicon.ico?favicon.2vob68tjqpejf.ico?dpl=dpl_8Z1iZ2qGnd57csn4gkXV4Qexhm92",
+      "scrapeId": "019fccfa-8c50-76cf-9b71-58f357b105ab",
+      "sourceURL": "https://www.milktreeagency.com",
+      "url": "https://www.milktreeagency.com/",
+      "statusCode": 200,
+      "contentType": "text/html; charset=utf-8",
+      "timezone": "America/New_York",
+      "proxyUsed": "basic",
+      "indexId": "a53eb10a-84cc-4029-a7c1-422b40a3ebd3",
+      "creditsUsed": 1,
+      "concurrencyLimited": false
+    }
+  },
+  "scrape_id": "019fccfa-8c50-76cf-9b71-58f357b105ab",
+  "id": "L0RCbzCyvktdhdxRrRBJX",
+  "startedAt": "2026-08-04T13:33:19.462Z",
+  "endedAt": "2026-08-04T13:33:29.453Z",
+  "endpoint": "scrape",
+  "formState": {
+    "parseFile": null,
+    "parseFileMeta": null,
+    "extractSetupCompleted": false,
+    "urls": [],
+    "extractSchema": {
+      "type": "object",
+      "required": [],
+      "properties": {
+        "company_mission": {
+          "type": "string"
+        },
+        "supports_sso": {
+          "type": "boolean"
+        },
+        "is_open_source": {
+          "type": "boolean"
+        },
+        "is_in_yc": {
+          "type": "boolean"
+        }
+      }
+    },
+    "extractPrompt": "Extract the company details, following the schema.",
+    "enableWebSearch": false,
+    "constrainUrls": false,
+    "options": {
+      "onlyMainContent": true,
+      "parsePDF": true,
+      "stealthMode": false,
+      "excludeTags": [],
+      "includeTags": [],
+      "waitFor": "",
+      "timeout": "",
+      "maxAge": "2 days",
+      "ignoreSitemap": false,
+      "crawlEntireDomain": false,
+      "sitemap": "include",
+      "limit": "10",
+      "maxDepth": "",
+      "excludePaths": [],
+      "includePaths": [],
+      "includeSubdomains": false,
+      "search": "",
+      "scrapeContentFromSearchResults": true,
+      "timeBasedSearch": "",
+      "location": "",
+      "prompt": ""
+    },
+    "formats": [
+      "branding"
+    ],
+    "sources": [
+      "web"
+    ],
+    "categories": [],
+    "jsonSchema": {
+      "type": "object",
+      "required": [],
+      "properties": {
+        "company_name": {
+          "type": "string"
+        },
+        "company_description": {
+          "type": "string"
+        }
+      }
+    },
+    "jsonPrompt": "",
+    "questionPrompt": "",
+    "highlightsQuery": "",
+    "agent": {},
+    "url": "www.milktreeagency.com",
+    "endpoint": "scrape"
+  },
+  "status": "success",
+  "version": "7xhhMmc8R3HsASQ3gSVks",
+  "isPreview": false
+}

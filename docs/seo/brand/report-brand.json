@@ -1,0 +1,47 @@
+{
+  "agency": "Milktree Agency",
+  "applies_to": "All future client-facing SEO reports created in this project",
+  "source": "User-supplied brand JSON and logo on 2026-10-01; font files retrieved from the agency website",
+  "logo": "milktree-logo.svg",
+  "preserve_logo_artwork": true,
+  "colors": {
+    "primary": "#141200",
+    "accent": "#FFEE02",
+    "background": "#000000",
+    "paper": "#FFFFFF",
+    "body_text": "#171717"
+  },
+  "fonts": {
+    "body_regular": "fonts/Satoshi-Regular.ttf",
+    "body_bold": "fonts/Satoshi-Bold.ttf",
+    "heading_bold": "fonts/InstrumentSans-Bold.ttf"
+  },
+  "layout": {
+    "page": "A4 portrait",
+    "side_margin_points": 48,
+    "header": "Black masthead, original white/yellow vector logo, yellow period label",
+    "footer": "Black footer with agency/client and yellow page number",
+    "body": "White content pages, black headings, pale neutral tables, yellow KPI panel",
+    "body_size_points": 10.5,
+    "body_leading_points": 14.5
+  },
+  "reference_builder": "../reporting/build_september_report.py",
+  "render_dependencies": [
+    "reportlab",
+    "svglib"
+  ],
+  "font_provenance": {
+    "source_base": "https://www.milktreeagency.com/_next/static/media/",
+    "satoshi_regular": "Satoshi_Regular-s.p.3an837ewdnfit.woff2",
+    "satoshi_bold": "Satoshi_Bold-s.p.0ves3_tkrm5oo.woff2",
+    "instrument_sans": "6b186f06197624ff.p.171shbaxyastj.woff2",
+    "conversion": "WOFF2 retained; Satoshi CFF outlines converted to TrueType quadratic outlines for PDF embedding; Instrument Sans instantiated at weight 700 and width 100."
+  },
+  "reporting_rules": [
+    "Keep report scope and actual completion dates distinct.",
+    "Do not attribute enquiries to SEO without source evidence.",
+    "Use current period evidence; never carry old metrics forward as new.",
+    "No personal enquiry data in client reports.",
+    "Render and visually inspect every final page before delivery."
+  ]
+}

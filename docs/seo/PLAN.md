@@ -2,6 +2,27 @@
 
 Prepared 1 October 2026. This is the operating plan for this repository. See `STATUS.md` for implementation state: a local change is not a deployed change.
 
+## Reporting standard and confirmed client facts
+
+Use Milktree Agency branding for every future client report in this project: `brand/report-brand.json`, supplied vector logo, and embedded Satoshi / Instrument Sans fonts. The reusable layout reference is `reporting/build_september_report.py`. Retain its black masthead, white logo, yellow accents and readable white content pages; update the period, evidence and work rather than carrying forward old metrics. Final reports belong in `output/pdf/`, with all pages rendered and visually checked. Brand assets and reports stay outside the website deployment.
+
+Confirmed public email: `asa@hampshireroofcare.co.uk`. Current testimonials originated in person, according to the user; preserve customer-approved wording and permission and do not label them Google reviews. Once Business Profile verification is approved, prepare and test Google's review link and QR code for the client to share with existing and previous customers. Invite honest feedback without incentives or review gating; do not send customer messages without explicit authorisation.
+
+The two enquiries were received in September, correcting the earlier October wording. On 1 October, Formspree's submissions page showed 13 September (slipped-tile repair) and 26 September (reroofing quote). The user confirms inbox delivery. Traffic source, SEO attribution and commercial outcome are unknown. Reporting stores aggregate facts, not customer names, messages or contact details.
+
+## October 2026 content delivery plan
+
+The two monthly owner reviews remain one hour on the 1st and 15th at 09:00 UK time, with AI drafting, implementation and validation between reviews. Add content alongside the measured mobile-speed work:
+
+1. New guide, provisional path `/guides/roof-repair-or-replacement`: "Roof repair or replacement: how to decide". Explain survey checks, repair limitations, roof condition and quote scope. Link to existing roof-repair and pitched-replacement services. Ask the roofer to check technical claims; do not invent prices or guarantees.
+2. Improve `/services/roof-repairs` and `/services/pitched-roof-replacement`: useful survey steps, scope, decision questions, FAQs, clear next steps and relevant internal links. These extend the existing October 1 improvements rather than repeat the same work.
+3. Refresh `/guides/slipped-roof-tiles`: improve safe next steps and assessment based on the genuine enquiry topic, preserve the URL and link to the repairs service. Avoid duplicating the existing guide.
+4. Add one distinct project page once the business supplies an actual completed job, town, roof type, work and approved photos. Link it from its service and existing area page. If evidence is delayed, deliver the guide and existing-page updates first and carry the project page forward explicitly.
+
+For each release: distinct title/description, clear heading structure, factual copy, descriptive image text, relevant links, tested enquiry route, mobile checks and sitemap/indexing follow-up. Retain Southampton, Winchester, New Forest and Chandler's Ford coverage; avoid mass-produced town variants. New topics are provisional editorial priorities, not measured search-volume claims. Track deployed dates and page-level visibility when data becomes available; no traffic or ranking uplift is guaranteed.
+
+The 1 October review sets the content briefs and mobile baseline. The 15 October review checks prepared content, measured speed changes, indexing, profile verification and lead quality, and agrees the next release. Guidance: [people-first content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content), [Google review link and QR code](https://support.google.com/business/answer/16816815?hl=en-GB).
+
 ## Objective and capacity
 
 Generate qualified roofing enquiries from Southampton, Winchester, the New Forest and Chandler's Ford. Retain the current five services: repairs, pitched replacements, flat replacements, leadwork, and pointing/cement work. The user confirmed current service areas and two monthly sessions on the 1st and 15th at 09:00 Europe/London.
@@ -20,7 +41,7 @@ Use the owner's two monthly hours for review, decisions and release. AI prepares
 | P1 | Schema asserted 100 five-star reviews and city-centre coordinates without evidence. Local testimonial explicitly labelled simulated in source. | Remove unsupported markup and simulated quotes. Confirm remaining business facts and reviews. |
 | P1 | Sitemap used fixed January 2024 dates; article schema invented default dates. | Generate sitemap from indexable routes; omit dates without evidence. |
 | P1 | Tailwind compiled in visitors' browsers; HTML referenced missing CSS. | Build CSS assets and verify appearance with/without JavaScript. |
-| P1 | Public asset folder approximately 25 MB; large JPEGs and external autoplay video. This is disk size, not page-transfer size. | Measure mobile performance; optimise actual LCP/INP/CLS bottlenecks, images and video. No score has been measured yet. |
+| P1 | Public asset folder approximately 25 MB; large JPEGs and external autoplay video. This is disk size, not page-transfer size. | 1 October mobile laboratory baseline: home performance 56, roof repairs 69; prioritise video, image sizing and rendering delays, then repeat tests. No real-user CWV assessment is available. |
 | P1 | Privacy, cookie and terms routes reuse one privacy page. Planned tracking and Formspree need accurate disclosure. | Distinct, accurate notices and cookie controls before analytics activation. |
 | P1 | Other review claims, 500 roofs, 15+ years, guarantees and reused local-project captions lack evidence in the repository. | Obtain client evidence; correct unsupported claims and captions before release sign-off. |
 | P2 | No repeatable SEO checks or project operating documentation. | One validation command, dated reports, a maintained backlog and scheduled review. |
@@ -87,3 +108,7 @@ Scheduled task: `hampshire-roof-care-seo-reviews`, in this task on the agreed da
 Track organic qualified enquiries/booked work (client verified), accepted web enquiries, organic sessions/landing pages, Search Console clicks/impressions/CTR/average position, indexed priority pages and technical issues. Separate brand/non-brand where possible. Average position is not a fixed local rank; a phone click is not a call answered.
 
 Every dated report records sources, windows, freshness, comparison periods, deployed changes, checks, results and next actions. Annotate tracking changes, seasonality and low volumes. Missing data is never zero. Draft client reports here; sending requires an explicit instruction.
+
+## Mid-month progress — 15 October 2026
+
+[Review brief and one-hour agenda](reports/2026-10-15-mid-month-review.md) saved with matched reporting windows and technical/indexing evidence. [October content draft](reports/2026-10-15-content-draft.md) is prepared for the new repair-or-replacement guide and related existing-page edits; implementation and publication remain pending. Business Profile is verified, and the [official review link, QR and customer-message draft](reports/2026-10-15-review-assets/README.md) are ready. No client messages or production changes were made. Prioritise commercial-page indexing, the reviewed content/email/performance batch, and genuine customer/job evidence.

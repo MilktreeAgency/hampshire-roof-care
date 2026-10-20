@@ -1,0 +1,219 @@
+{
+  "observed_at_utc": "2026-10-15T09:02:24.461600+00:00",
+  "checks": [
+    {
+      "url": "https://www.hampshireroofcare.co.uk/",
+      "status": 200,
+      "final_url": "https://www.hampshireroofcare.co.uk/",
+      "title": "Expert Roofing Services in Hampshire | Hampshire Roof Care",
+      "h1": [
+        "Roof repairs & replacements",
+        " ",
+        "in Hampshire"
+      ],
+      "canonical": [
+        "https://www.hampshireroofcare.co.uk/"
+      ],
+      "robots": [
+        "index, follow, max-image-preview:large"
+      ],
+      "public_email_links": [
+        "mailto:info.hampshireroofcare@gmail.com"
+      ],
+      "vimeo_present": true
+    },
+    {
+      "url": "https://www.hampshireroofcare.co.uk/services/roof-repairs",
+      "status": 200,
+      "final_url": "https://www.hampshireroofcare.co.uk/services/roof-repairs",
+      "title": "Roof Repairs in Hampshire | Hampshire Roof Care",
+      "h1": [
+        "Roof Repairs",
+        " in Hampshire"
+      ],
+      "canonical": [
+        "https://www.hampshireroofcare.co.uk/services/roof-repairs"
+      ],
+      "robots": [
+        "index, follow, max-image-preview:large"
+      ],
+      "public_email_links": [
+        "mailto:info.hampshireroofcare@gmail.com"
+      ],
+      "vimeo_present": false
+    },
+    {
+      "url": "https://www.hampshireroofcare.co.uk/services/pitched-roof-replacement",
+      "status": 200,
+      "final_url": "https://www.hampshireroofcare.co.uk/services/pitched-roof-replacement",
+      "title": "Pitched Roof Replacement in Hampshire | Hampshire Roof Care",
+      "h1": [
+        "Pitched Roof Replacement",
+        " in Hampshire"
+      ],
+      "canonical": [
+        "https://www.hampshireroofcare.co.uk/services/pitched-roof-replacement"
+      ],
+      "robots": [
+        "index, follow, max-image-preview:large"
+      ],
+      "public_email_links": [
+        "mailto:info.hampshireroofcare@gmail.com"
+      ],
+      "vimeo_present": false
+    },
+    {
+      "url": "https://www.hampshireroofcare.co.uk/guides/slipped-roof-tiles",
+      "status": 200,
+      "final_url": "https://www.hampshireroofcare.co.uk/guides/slipped-roof-tiles",
+      "title": "Slipped Roof Tiles - How Urgent Is It? | Hampshire Roof Care",
+      "h1": [
+        "Slipped Roof Tiles: How Urgent Is It?"
+      ],
+      "canonical": [
+        "https://www.hampshireroofcare.co.uk/guides/slipped-roof-tiles"
+      ],
+      "robots": [
+        "index, follow, max-image-preview:large"
+      ],
+      "public_email_links": [
+        "mailto:info.hampshireroofcare@gmail.com"
+      ],
+      "vimeo_present": false
+    },
+    {
+      "url": "https://www.hampshireroofcare.co.uk/areas/southampton",
+      "status": 200,
+      "final_url": "https://www.hampshireroofcare.co.uk/areas/southampton",
+      "title": "Roofer in Southampton | Hampshire Roof Care",
+      "h1": [
+        "Roofer in Southampton"
+      ],
+      "canonical": [
+        "https://www.hampshireroofcare.co.uk/areas/southampton"
+      ],
+      "robots": [
+        "index, follow, max-image-preview:large"
+      ],
+      "public_email_links": [
+        "mailto:info.hampshireroofcare@gmail.com"
+      ],
+      "vimeo_present": false
+    },
+    {
+      "url": "https://www.hampshireroofcare.co.uk/contact",
+      "status": 200,
+      "final_url": "https://www.hampshireroofcare.co.uk/contact",
+      "title": "Contact Us - Book Your Free Survey | Hampshire Roof Care",
+      "h1": [
+        "Book Your Free Survey"
+      ],
+      "canonical": [
+        "https://www.hampshireroofcare.co.uk/contact"
+      ],
+      "robots": [
+        "index, follow, max-image-preview:large"
+      ],
+      "public_email_links": [
+        "mailto:info.hampshireroofcare@gmail.com"
+      ],
+      "vimeo_present": false
+    },
+    {
+      "url": "https://www.hampshireroofcare.co.uk/sitemap.xml",
+      "status": 200,
+      "final_url": "https://www.hampshireroofcare.co.uk/sitemap.xml",
+      "title": "",
+      "h1": [],
+      "canonical": [],
+      "robots": [],
+      "public_email_links": [],
+      "vimeo_present": false,
+      "locations": [
+        "https://www.hampshireroofcare.co.uk/",
+        "https://www.hampshireroofcare.co.uk/services",
+        "https://www.hampshireroofcare.co.uk/services/roof-repairs",
+        "https://www.hampshireroofcare.co.uk/services/pitched-roof-replacement",
+        "https://www.hampshireroofcare.co.uk/services/flat-roof-replacement",
+        "https://www.hampshireroofcare.co.uk/services/leadwork-and-lead-flashing",
+        "https://www.hampshireroofcare.co.uk/services/roof-pointing-and-cement-work",
+        "https://www.hampshireroofcare.co.uk/areas",
+        "https://www.hampshireroofcare.co.uk/areas/southampton",
+        "https://www.hampshireroofcare.co.uk/areas/winchester",
+        "https://www.hampshireroofcare.co.uk/areas/new-forest",
+        "https://www.hampshireroofcare.co.uk/areas/chandlers-ford",
+        "https://www.hampshireroofcare.co.uk/guides",
+        "https://www.hampshireroofcare.co.uk/guides/water-stain-on-ceiling-after-rain",
+        "https://www.hampshireroofcare.co.uk/guides/slipped-roof-tiles",
+        "https://www.hampshireroofcare.co.uk/guides/chimney-leaks",
+        "https://www.hampshireroofcare.co.uk/guides/flat-roof-bubbling",
+        "https://www.hampshireroofcare.co.uk/guides/how-site-survey-works",
+        "https://www.hampshireroofcare.co.uk/guides/lead-flashing-explained",
+        "https://www.hampshireroofcare.co.uk/about",
+        "https://www.hampshireroofcare.co.uk/contact",
+        "https://www.hampshireroofcare.co.uk/reviews",
+        "https://www.hampshireroofcare.co.uk/faqs"
+      ]
+    },
+    {
+      "url": "https://www.hampshireroofcare.co.uk/robots.txt",
+      "status": 200,
+      "final_url": "https://www.hampshireroofcare.co.uk/robots.txt",
+      "title": "",
+      "h1": [],
+      "canonical": [],
+      "robots": [],
+      "public_email_links": [],
+      "vimeo_present": false,
+      "body": "User-agent: *\nAllow: /\n\nSitemap: https://www.hampshireroofcare.co.uk/sitemap.xml\n"
+    },
+    {
+      "url": "https://www.hampshireroofcare.co.uk/seo-review-missing-20261015",
+      "status": 404,
+      "final_url": "https://www.hampshireroofcare.co.uk/seo-review-missing-20261015",
+      "title": "Page not found | Hampshire Roof Care",
+      "h1": [
+        "Page not found"
+      ],
+      "canonical": [
+        "https://www.hampshireroofcare.co.uk/404"
+      ],
+      "robots": [
+        "noindex, follow"
+      ],
+      "public_email_links": [
+        "mailto:info.hampshireroofcare@gmail.com"
+      ],
+      "vimeo_present": false
+    },
+    {
+      "url": "https://www.hampshireroofcare.co.uk/guides/roof-repair-or-replacement",
+      "status": 404,
+      "final_url": "https://www.hampshireroofcare.co.uk/guides/roof-repair-or-replacement",
+      "title": "Page not found | Hampshire Roof Care",
+      "h1": [
+        "Page not found"
+      ],
+      "canonical": [
+        "https://www.hampshireroofcare.co.uk/404"
+      ],
+      "robots": [
+        "noindex, follow"
+      ],
+      "public_email_links": [
+        "mailto:info.hampshireroofcare@gmail.com"
+      ],
+      "vimeo_present": false
+    },
+    {
+      "url": "https://hampshireroofcare.co.uk/",
+      "status": 307,
+      "location": "https://www.hampshireroofcare.co.uk/"
+    },
+    {
+      "url": "http://hampshireroofcare.co.uk/",
+      "status": 308,
+      "location": "https://hampshireroofcare.co.uk/"
+    }
+  ]
+}

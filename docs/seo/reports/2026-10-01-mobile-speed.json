@@ -1,0 +1,82 @@
+{
+  "observed_date": "2026-10-01",
+  "timezone": "Europe/London",
+  "method": {
+    "tool": "Google PageSpeed Insights",
+    "lighthouse_version": "13.5.0",
+    "device": "Emulated Moto G Power",
+    "network": "Slow 4G",
+    "load": "Initial load",
+    "runs_per_page": 1,
+    "real_user_crux_data_available": false
+  },
+  "pages": [
+    {
+      "page": "https://www.hampshireroofcare.co.uk/",
+      "report_url": "https://pagespeed.web.dev/analysis/https-www-hampshireroofcare-co-uk/pqdhvvj9na?form_factor=mobile",
+      "report_time_local": "14:27:35",
+      "scores": {
+        "performance": 56,
+        "accessibility": 93,
+        "best_practices": 58,
+        "seo": 100
+      },
+      "metrics": {
+        "fcp_seconds": 5.5,
+        "lcp_seconds": 12.2,
+        "tbt_ms": 190,
+        "cls": 0,
+        "speed_index_seconds": 6.6
+      },
+      "payload_kib": 17998,
+      "vimeo_payload_kib": 16743.6,
+      "estimated_render_blocking_savings_ms": 900,
+      "observations": [
+        "Vimeo accounts for approximately 93% of transferred data.",
+        "LCP candidate was text; delayed rendering also requires attention.",
+        "Contrast and heading-order warnings remain.",
+        "Vimeo third-party cookie and deprecated API warnings require review."
+      ]
+    },
+    {
+      "page": "https://www.hampshireroofcare.co.uk/services/roof-repairs",
+      "report_url": "https://pagespeed.web.dev/analysis/https-www-hampshireroofcare-co-uk-services-roof-repairs/e0a90q1gmq?form_factor=mobile",
+      "report_time_local": "14:28:11",
+      "scores": {
+        "performance": 69,
+        "accessibility": 98,
+        "best_practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "fcp_seconds": 3.0,
+        "lcp_seconds": 12.8,
+        "tbt_ms": 0,
+        "cls": 0,
+        "speed_index_seconds": 3.0
+      },
+      "payload_kib": 2799,
+      "estimated_image_savings_kib": 2541,
+      "estimated_render_blocking_savings_ms": 1200,
+      "observations": [
+        "Related-service thumbnails substantially exceed rendered dimensions.",
+        "LCP candidate was text; delayed rendering also requires attention.",
+        "Heading-order warning remains."
+      ]
+    }
+  ],
+  "limitations": [
+    "Single laboratory run per page; scores vary between runs.",
+    "No before-and-after speed improvement established.",
+    "Audit estimates cannot be added together or presented as realised savings.",
+    "SEO audit score is not a ranking score or complete SEO assessment.",
+    "No real-user Core Web Vitals conclusion is available."
+  ],
+  "recommended_next_actions": [
+    "Defer homepage background video and provide a lightweight mobile first view.",
+    "Serve resized modern images.",
+    "Reduce resources delaying visible text.",
+    "Review contrast, heading hierarchy and Vimeo browser warnings.",
+    "Repeat the same two mobile audits after tested changes."
+  ]
+}

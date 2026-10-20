@@ -24,3 +24,7 @@ dist-ssr
 *.sw?
 .vercel
 .env*
+
+# Local client reports and artifact working files
+/output/
+/tmp/

@@ -1,0 +1,155 @@
+{
+  "observed_date": "2026-10-15",
+  "method": "Signed-in Chrome UI, read-only Google reports; public HTTP checks; local npm run check",
+  "windows": {
+    "current": [
+      "2026-10-07",
+      "2026-10-11"
+    ],
+    "previous": [
+      "2026-10-02",
+      "2026-10-06"
+    ],
+    "days_each": 5,
+    "caveats": [
+      "Low counts; different weekday mix; tracking started recently",
+      "GSC dates use Pacific time; GA4 property uses United Kingdom time",
+      "No September organic baseline or attribution established"
+    ]
+  },
+  "search_console": {
+    "property": "sc-domain:hampshireroofcare.co.uk",
+    "search_type": "Web",
+    "filters": "All countries and devices",
+    "performance": {
+      "current": {
+        "clicks": 0,
+        "impressions": 110,
+        "ctr_percent": 0,
+        "average_position": 26.2
+      },
+      "previous": {
+        "clicks": 8,
+        "impressions": 229,
+        "ctr_percent": 3.5,
+        "average_position": 30.0
+      }
+    },
+    "coverage": {
+      "last_updated": "2026-10-09",
+      "indexed": 7,
+      "not_indexed": 20,
+      "reasons": {
+        "discovered_currently_not_indexed": 14,
+        "crawled_currently_not_indexed": 2,
+        "page_with_redirect": 2,
+        "excluded_noindex": 1,
+        "alternative_proper_canonical": 1
+      },
+      "caveat": "All known URLs include variants and utility URLs; not the same denominator as 23 sitemap URLs"
+    },
+    "crawled_not_indexed_examples": [
+      {
+        "path": "/services/pitched-roof-replacement",
+        "last_crawl": "2026-07-11"
+      },
+      {
+        "path": "/areas/winchester",
+        "last_crawl": "2026-05-31"
+      }
+    ],
+    "roof_repairs_inspection": {
+      "url": "https://www.hampshireroofcare.co.uk/services/roof-repairs",
+      "state": "URL is not on Google; URL unknown to Google",
+      "last_crawl": null,
+      "referring_sitemap": null,
+      "live_test_this_review": false,
+      "request_indexing_this_review": false
+    },
+    "sitemap": {
+      "status": "Success",
+      "submitted": "2026-10-01",
+      "last_read": "2026-10-06",
+      "discovered_pages": 23
+    },
+    "manual_actions": "No issues detected",
+    "security_issues": "No issues detected",
+    "page_impression_examples": {
+      "/areas/new-forest": {
+        "current": 41,
+        "previous": 86
+      },
+      "/guides/lead-flashing-explained": {
+        "current": 29,
+        "previous": 40
+      },
+      "/areas/southampton": {
+        "current": 18,
+        "previous": 44
+      }
+    }
+  },
+  "ga4": {
+    "account": "193548959",
+    "property": "556932982",
+    "measurement_id": "G-DW33S98E2J",
+    "scope": "Traffic acquisition, session primary channel group, All Users",
+    "current": {
+      "sessions": 1,
+      "organic_search_sessions": 0,
+      "engaged_sessions": 1,
+      "all_key_events": 0,
+      "organic_click_email": 0,
+      "organic_click_to_call": 0
+    },
+    "previous": {
+      "sessions": 8,
+      "organic_search_sessions": 6,
+      "engaged_sessions": 6,
+      "all_key_events": 0,
+      "organic_click_email": 1,
+      "organic_click_to_call": 1
+    },
+    "lead_caveat": "Zero reported key events is not evidence of zero real enquiries. Live accepted-form generate_lead has not yet been validated. Consent limits collection."
+  },
+  "business_profile": {
+    "business_name": "Hampshire Roofcare Company",
+    "location_id": "17492783877330208393",
+    "status": "Verified",
+    "review_url": "https://g.page/r/CdUkZX3eXwjuEBM/review",
+    "review_destination_verified": true,
+    "qr_decoded_url": "https://g.page/r/CdUkZX3eXwjuEBM/review",
+    "customer_messages_sent": false
+  },
+  "formspree": {
+    "october_checked_this_run": false,
+    "october_accepted_enquiries": null,
+    "october_qualified_leads": null,
+    "september_confirmed_submissions": 2,
+    "september_source": "reports/2026-09-formspree-summary.json and user-confirmed inbox delivery",
+    "organic_attribution": "Unknown"
+  },
+  "checks": {
+    "npm_run_check": "Passed: typecheck, isolated analytics tests, build and SEO checks",
+    "built_routes": 26,
+    "additional_404": true,
+    "indexable_sitemap_urls": 23,
+    "internal_paths_assets_checked": 50,
+    "main_js_kb": 511.52,
+    "main_js_gzip_kb": 143.35,
+    "new_mobile_speed_run": false,
+    "public_checks_file": "2026-10-15-public-checks.json"
+  },
+  "access": {
+    "google_browser": "Available",
+    "treg_api": "Team milktreeagency no longer available; no metrics returned",
+    "new_credentials_or_access_changes": false
+  },
+  "release": {
+    "source_changes_this_review": false,
+    "deployed_this_review": false,
+    "pending_email": "asa@hampshireroofcare.co.uk",
+    "live_email_observed": "info.hampshireroofcare@gmail.com",
+    "new_guide_live": false
+  }
+}
